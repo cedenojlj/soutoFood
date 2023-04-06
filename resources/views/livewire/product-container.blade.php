@@ -334,7 +334,7 @@
                                                     <td>
                                                         <input wire:model="amount.{{$key}}" 
                                                         id="amount" type="number"  
-                                                        class="form-control @error('amount.'.$key) is-invalid @enderror" 
+                                                        class="form-control bg-info @error('amount.'.$key) is-invalid @enderror" 
                                                         name="amount" required autofocus>
                                                         
                                                         <span class="error">
@@ -365,7 +365,7 @@
                         
                                                     <td><input wire:model="notes.{{$key}}" 
                                                         id="notes" type="number" 
-                                                        class="form-control @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$">
+                                                        class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$">
                                                     
                                                         <span class="error">
                                                             @error('notes.'.$key) {{ $message }} @enderror
@@ -383,7 +383,7 @@
                                             
                                                     <td><input wire:model="qtyone.{{$key}}" 
                                                         id="qtyone" type="number" 
-                                                        class="form-control @error('qtyone.'.$key) is-invalid @enderror" name="qtyone" required>
+                                                        class="form-control bg-info @error('qtyone.'.$key) is-invalid @enderror" name="qtyone" required>
                                                     
                                                         
                                                         <span class="error">
@@ -394,7 +394,7 @@
                                             
                                                     <td><input wire:model="qtytwo.{{$key}}"  
                                                         id="qtytwo" type="number" 
-                                                        class="form-control @error('qtytwo.'.$key) is-invalid @enderror" name="qtytwo">
+                                                        class="form-control bg-info @error('qtytwo.'.$key) is-invalid @enderror" name="qtytwo">
                                                     
                                                         <span class="error">
                                                             @error('qtytwo.'.$key) {{ $message }} @enderror
@@ -404,7 +404,7 @@
                                             
                                                     <td><input wire:model="qtythree.{{$key}}" 
                                                         id="qtythree" type="number"  
-                                                        class="form-control @error('qtythree.'.$key) is-invalid @enderror" name="qtythree">
+                                                        class="form-control bg-info @error('qtythree.'.$key) is-invalid @enderror" name="qtythree">
                                                     
                                                         <span class="error">
                                                             @error('qtythree.'.$key) {{ $message }} @enderror

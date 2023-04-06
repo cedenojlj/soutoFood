@@ -40,7 +40,7 @@
 
                                     <div class="col-md-6">                
                                         
-                                        <input type="text" class="col form-control" wire:model="searchx">               
+                                        <input type="text" class="col form-control" wire:model="searchx" autocomplete="nope">               
                                     
                                     </div>
 

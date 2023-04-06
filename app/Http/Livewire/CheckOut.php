@@ -235,6 +235,10 @@ class CheckOut extends Component
             $this->status = 'Order Created Successfully'; 
 
             $this->mostrarOrdenCreada=true;
+
+            $this->reset('pin');
+
+            $this->reset('searchx');
                      
 
            //$this->enviandoEmail($order->id);

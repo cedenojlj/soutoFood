@@ -51,7 +51,8 @@
                                     </div> --}}
                                 </div> 
                                 
-                                <form wire:submit.prevent="submit" wire:loading.remove wire:target="submit">            
+                                {{-- <form wire:submit.prevent="submit" wire:loading.remove wire:target="submit" autocomplete="off">  --}}
+                                <div wire:loading.remove wire:target="submit">           
 
                                     @if (!empty($searchx))
 
@@ -164,7 +165,7 @@
                                 
                                                 <label for="pin" class="col-form-label">PIN</label>
                                 
-                                                <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="new-password">
+                                                <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="nope">
                                 
                                                 @error('pin')
                                                     <span class="invalid-feedback" role="alert">
@@ -182,7 +183,7 @@
                                 
                                                 <label for="rebate" class="col-form-label">Rebate</label>
                                 
-                                                <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control @error('rebate') is-invalid @enderror" name="rebate" >
+                                                <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control @error('rebate') is-invalid @enderror" name="rebate" autocomplete="new-password" >
                                 
                                                 @error('rebate')
                                                     <span class="invalid-feedback" role="alert">
@@ -211,7 +212,9 @@
 
                                             <div class="col-md-6">
 
-                                                <button type="submit" class="btn btn-primary">Checkout</button>  
+                                                {{-- <button type="submit" class="btn btn-primary">Checkout</button>   --}}
+                                                <button wire:click="submit" type="button" class="btn btn-primary">Checkout</button>
+                                                
 
                                             </div>
 
@@ -219,9 +222,8 @@
                                     
                                     @endif
 
-
-                                </form>                        
-                            
+                                </div>                             
+                             
                         @endif       
                 
             </div>            
@@ -251,6 +253,8 @@
 
                 </div>
             
-             @endif
+            @endif
     
 </div>
+
+

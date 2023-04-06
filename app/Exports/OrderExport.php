@@ -48,7 +48,7 @@ class OrderExport implements FromView, ShouldAutoSize, WithDrawings
     {
         $orden= Order::find($this->id);
 
-        $orderDate="#".$orden->created_at->format('Ymdhis');
+        $orderDate= ($orden->created_at->format('Ymdhis'));
 
         $user=User::find(Auth::id());
 

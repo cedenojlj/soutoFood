@@ -98,7 +98,9 @@ class ProductContainer extends Component
 
        //$productos = Product::where('user_id', Auth::user()->id)->get();
 
-        $productos = Product::where('user_id', Auth::id())->orderBy('prioridad')->get();
+       // $productos = Product::where('user_id', Auth::id())->orderBy('prioridad')->get();
+
+        $productos = Product::where('email', Auth::user()->email)->orderBy('prioridad')->get();
 
         //dd($productos);
         //$this->listaProductos = [];
@@ -160,6 +162,12 @@ class ProductContainer extends Component
 
             $this->mostrarItems = true;
 
+           
+
+            $this->reset('search');
+
+            $this->reset('idProduct');
+
 
             # code...
         } else {
@@ -201,7 +209,9 @@ class ProductContainer extends Component
 
             //dd($this->items);
 
-            $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('user_id', Auth::id())->get();
+           // $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('user_id', Auth::id())->get();
+
+            $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('email', Auth::user()->email)->get();
 
             //dd($bundles);
 
@@ -267,7 +277,9 @@ class ProductContainer extends Component
 
     public function updatedSearch()
     {
-        $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->get();
+       // $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->get();
+
+        $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('email', Auth::user()->email)->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('email', Auth::user()->email)->get();
     }
 
     public function save()
@@ -278,6 +290,7 @@ class ProductContainer extends Component
        //session()->forget('carrito');
 
 
+        $proceder=false;
 
         foreach ($this->items as $key => $value) {
 
@@ -320,6 +333,8 @@ class ProductContainer extends Component
 
                     $this->mierror = false;
                     $this->indicador[$key] = 'table-success';
+
+                    $proceder=true;
 
                     //******************************************* */
 
@@ -395,7 +410,36 @@ class ProductContainer extends Component
 
 
             $this->mensajex = 'The quantity must be equal to 
-                the sum of the quantity One, two and three';
+                the sum of the quantity One, two and three, only valid items were added';
+
+           //dd(count($carrito));
+
+           /* if (isset($carrito)) {
+
+                if (count($carrito)>0) {
+
+                    $this->showCheckout=true;
+
+                    $this->showGeneral=false;
+            
+                    $this->mensajex = '';
+                   
+                }
+            
+           } */
+        
+           if ($proceder) {
+
+                $this->showCheckout=true;
+
+                $this->showGeneral=false;
+        
+                $this->mensajex = '';           
+        
+           }
+           
+
+
         } else {
 
 

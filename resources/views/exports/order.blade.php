@@ -6,7 +6,7 @@
             <tr>
                 <td></td>
                 <th style="font-size:16px"> <strong>Order:</strong></th>
-                <td style="font-size:16px; "><strong>{{ $orderDate}}</strong></td>                  
+                <td style="font-size:16px; "><strong>{{ "0".$orderDate}}</strong></td>                  
                 <td></td>              
             </tr>    
             <tr>
@@ -57,7 +57,7 @@
             <td style="border: 1px solid #000000;">{{ $order->name }}</td>  
                       
 
-            <td style="border: 1px solid #000000;">{{ $order->upc }}</td>
+            <td style="border: 1px solid #000000;">{{ "0".$order->upc }}</td>
             <td style="border: 1px solid #000000;">{{ $order->pallet }}</td>
             <td style="border: 1px solid #000000;">{{"$ ". $order->price }}</td>
             <td style="border: 1px solid #000000;">{{ $order->notes }}</td>
@@ -81,19 +81,19 @@
     <tbody>
 
         <tr>            
-            <th style="font-size:14px"> <strong>Rebate Number #</strong></th>
+            <th style="font-size:14px"> <strong>Rebate #</strong></th>
             <td style="font-size:14px"><strong>{{$numeroRebate}}</strong></td>  
             
         </tr>    
 
         <tr>            
-            <th style="font-size:14px"> <strong>Rebate #</strong></th>
+            <th style="font-size:14px"> <strong>Rebate</strong></th>
             <td style="font-size:14px"><strong>{{"$ ". $orden->rebate}}</strong></td>  
             
         </tr>    
         <tr>
             
-            <th style="font-size:14px;"> <strong>Amount #</strong></th>
+            <th style="font-size:14px;"> <strong>Amount</strong></th>
             <td style="font-size:14px"><strong>{{"$ ". $orden->total }}</strong></td>   
             
                         

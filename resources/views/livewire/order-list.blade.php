@@ -17,7 +17,11 @@
             
             {{-- <li>{{ $order->name }}</li> --}}
 
-           
+
+
+            @php
+                $totalizador=0;
+            @endphp
 
                 <div class="card mb-3">
                     <div class="card-body">
@@ -45,8 +49,18 @@
                                     <a href="{{url('export-order',[$order->id])}}" class="btn btn-primary">Download</a>
                                 </td>
                               </tr> 
+                              @php
+                                  $totalizador = $totalizador + $order->total
+                              @endphp
+                              @endforeach
+                              
+                              <tr>
+                                <th scope="row" colspan="3">Total:</th>                                
+                                <td colspan="2">
+                                   <strong>{{$totalizador}}</strong> 
+                                </td>
+                              </tr> 
 
-                              @endforeach  
 
                             </tbody>
                           </table>

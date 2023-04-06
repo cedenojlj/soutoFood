@@ -60,7 +60,9 @@
             
                             <div class="card-body">                        
                                 
-                                <h5>{{Auth::user()->name}}</h5>                                          
+                                {{-- <h5>{{Auth::user()->name}}</h5>   --}}
+                                
+                                <h5>Search Customer:</h5>  
                                 
                                 <livewire:check-out />
 
@@ -287,7 +289,7 @@
 
                     <div class="table-responsive" wire:loading.remove wire:target="save">
 
-                            <table class="table table-sm">
+                            <table class="table table-sm table-bordered">
 
                                     <thead>
                                         <tr>
@@ -297,8 +299,8 @@
                                             <th scope="col">Scan Item UPC</th>
                                             <th scope="col">Cases per Pallet</th>
                                             <th scope="col">Food Show Deal</th>
-                                            <th scope="col">Notes</th>
-                                            <th scope="col">Final Price</th>
+                                            <th scope="col">Notes $</th>
+                                            <th scope="col">Final Price $</th>
                                             {{-- <th scope="col">{{Auth::user()->date1}}</th>
                                             <th scope="col">{{Auth::user()->date2}}</th>
                                             <th scope="col">{{Auth::user()->date3}}</th>  --}} 
@@ -348,9 +350,9 @@
                                                     <td>{{$value['description']}}</td>
                                                     <td>{{$value['upc']}}</td>
                                                     <td>{{$value['pallet']}}</td>
-                                                    {{-- <td>{{$value['price']}}</td> --}}
+                                                   <td>{{"$".$value['price']}}</td>
 
-                                                    <td><input wire:model="prices.{{$key}}" 
+                                                    {{-- <td><input wire:model="prices.{{$key}}" 
                                                         id="prices" type="number" 
                                                         class="form-control @error('prices.'.$key) is-invalid @enderror" name="prices" >
                                                     
@@ -358,12 +360,12 @@
                                                             @error('prices.'.$key) {{ $message }} @enderror
                                                         </span>
                                                     
-                                                    </td>
+                                                    </td> --}}
                         
                         
                                                     <td><input wire:model="notes.{{$key}}" 
                                                         id="notes" type="number" 
-                                                        class="form-control @error('notes.'.$key) is-invalid @enderror" name="notes" >
+                                                        class="form-control @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$">
                                                     
                                                         <span class="error">
                                                             @error('notes.'.$key) {{ $message }} @enderror
@@ -374,7 +376,9 @@
                         
                                                     {{-- <td>{{!empty($notes[$key])? $value['price'] - $notes[$key] :$value['price']}}</td> --}}
 
-                                                    <td>{{!empty($notes[$key])? (float) $prices[$key] - (float) $notes[$key] :(float) $prices[$key]}}</td>
+                                                    {{-- <td>{{!empty($notes[$key])? "$".((float) $prices[$key] - (float) $notes[$key]) :"$".((float) $prices[$key])}}</td> --}}
+
+                                                    <td>{{!empty($notes[$key])? "$".((float) $value['price'] - (float) $notes[$key]) :"$".((float) $value['price'])}}</td>
                         
                                             
                                                     <td><input wire:model="qtyone.{{$key}}" 

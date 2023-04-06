@@ -32,7 +32,7 @@ class ProductLists extends Component
     public function render()
     {
         return view('livewire.product-lists', [
-            'productos'=>Product::where('name','LIKE','%'.$this->search.'%')->where('user_id',Auth::id())->paginate(25),
+            'productos'=>Product::where('name','LIKE','%'.$this->search.'%')->where('email',Auth::user()->email)->paginate(25),
         ]);
     }
 }

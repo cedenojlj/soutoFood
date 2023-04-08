@@ -82,7 +82,7 @@ class ProductContainer extends Component
     protected $rules = [
 
 
-        'amount.*' => 'required|numeric|min:0',
+        'amount.*' => 'required|numeric|integer|min:1|max:999',
         'notes.*' => 'required|numeric|min:0',
         'prices.*' => 'required|numeric|min:0',
         'qtyone.*' => 'required|numeric|min:0',
@@ -91,6 +91,150 @@ class ProductContainer extends Component
 
     ];
 
+    /* public function updated($propertyName)
+    {
+       $this->validateOnly($propertyName);
+
+       // dd($propertyName);
+    } */
+
+    
+    public function updatedAmount($value, $key)
+    {
+              
+       $value= intval($value);   
+       
+       //dd($value);
+
+       $clave= intval($key);  
+
+       //$this->amount[$clave]='';
+
+
+       //$this->reset($this->amount[$clave]);
+
+      if (($value <= 0) or $value > 999) {
+
+            $this->amount[$key]='';
+
+        }else{
+
+            $this->amount[$key]= $value; 
+
+        }
+
+    } 
+
+    public function updatedQtyone($value, $key)
+    {
+              
+       $value= intval($value);   
+       
+       //dd($value);
+
+       $clave= intval($key);  
+
+       //$this->amount[$clave]='';
+
+
+       //$this->reset($this->amount[$clave]);
+
+      if (($value <= 0) or $value > 999) {
+
+            $this->qtyone[$key]='';
+
+        }else{
+
+            $this->qtyone[$key]= $value; 
+
+        }
+        
+    } 
+
+    
+    public function updatedQtytwo($value, $key)
+    {
+              
+       $value= intval($value);   
+       
+       //dd($value);
+
+       $clave= intval($key);  
+
+       //$this->amount[$clave]='';
+
+
+       //$this->reset($this->amount[$clave]);
+
+      if (($value <= 0) or $value > 999) {
+
+            $this->qtytwo[$key]='';
+
+        }else{
+
+            $this->qtytwo[$key]= $value; 
+
+        }
+        
+    } 
+
+    public function updatedQtythree($value, $key)
+    {
+              
+       $value= intval($value);   
+       
+       //dd($value);
+
+       $clave= intval($key);  
+
+       //$this->amount[$clave]='';
+
+
+       //$this->reset($this->amount[$clave]);
+
+      if (($value <= 0) or $value > 999) {
+
+            $this->qtythree[$key]='';
+
+        }else{
+
+            $this->qtythree[$key]= $value; 
+
+        }
+        
+    } 
+
+
+    public function updatedNotes($value, $key)
+    {
+              
+       $value= floatval($value);   
+       
+       //dd($value);
+
+       $clave= intval($key);  
+
+       //$this->amount[$clave]='';
+
+
+       //$this->reset($this->amount[$clave]);
+
+      if (($value <= 0)) {
+
+            $this->notes[$key]='';
+
+        }else{
+
+            $this->notes[$key]= $value; 
+
+        }
+        
+    } 
+
+
+
+
+    
 
     public function mount()
     {

@@ -183,8 +183,19 @@
                                 
                                                 <label for="rebate" class="col-form-label">Rebate</label>
                                 
-                                                <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control @error('rebate') is-invalid @enderror" name="rebate" autocomplete="new-password" >
+                                                {{-- <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control @error('rebate') is-invalid @enderror" name="rebate" autocomplete="new-password" > --}}
                                 
+                                                <div class="input-group mb-3">
+
+                                                    <span class="input-group-text">$</span>
+                                                    <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                    {{-- <span class="input-group-text">.00</span> --}}
+                                                
+                                                </div>
+                                                
+                                                
+                                                
+                                                
                                                 @error('rebate')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

@@ -33,6 +33,7 @@
                                 <th scope="col">Created</th>
                                 <th scope="col">Customer</th>
                                 <th scope="col">Total $</th>
+                                <th scope="col">Rebate $</th>
                                 <th scope="col">Actions</th>
                               </tr>
                             </thead>
@@ -44,7 +45,9 @@
                                 <th scope="row">{{ $order->id }}</th>
                                 <td>{{ $order->created_at->format('Ymdhis') }}</td>
                                 <td>{{ $order->customerName }}</td>
-                                <td>{{ '$ '. $order->total }}</td>
+                                <td>{{ '$ '.number_format($order->total,2)}}</td>
+                                <td>{{ '$ '.number_format($order->rebate,2) }}</td>
+
                                 <td>
                                     <a href="{{url('export-order',[$order->id])}}" class="btn btn-primary">Download</a>
                                 </td>
@@ -57,7 +60,7 @@
                               <tr>
                                 <th scope="row" colspan="3">Total:</th>                                
                                 <td colspan="2">
-                                   <strong>{{$totalizador}}</strong> 
+                                   <strong>{{'$ '.number_format($totalizador,2)}}</strong> 
                                 </td>
                               </tr> 
 

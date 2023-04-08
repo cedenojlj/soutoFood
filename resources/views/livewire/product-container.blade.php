@@ -269,29 +269,34 @@
                 
                 @if ($mostrarItems)
 
-                    <div class="row mt-4 mb-2" wire:loading.remove wire:target="save">
+                    <div class="row mt-4 mb-2 justify-content-center" wire:loading.remove wire:target="save">
 
-                            <div class="col-1 offset-md-1">
+                            <div class="col-md-11">                            
 
-                                <button type="button" wire:click="save" name="" id="" class="btn btn-primary">Checkout</button>
+                                <div class="row justify-content-end">
 
-                                
+                                    <div class="col col-md-1">
+
+                                        <button type="button" wire:click="openFormItem" name="" id="" class="btn btn-primary">AddItem</button>
+    
+                                    </div>
+    
+                                    <div class="col col-md-1">
+    
+                                        <button type="button" wire:click="openFormItemBundle" name="" id="" class="btn btn-primary">Bundle</button>
+    
+                                    </div> 
+    
+                                    <div class="col col-md-1">
+    
+                                        <button type="button" wire:click="save" name="" id="" class="btn btn-primary">Checkout</button>                                
+    
+                                    </div>
+
+
+                                </div>
 
                             </div>
-
-                            <div class="col-1">
-
-                                <button type="button" wire:click="openFormItem" name="" id="" class="btn btn-primary">AddItem</button>
-
-                            </div>
-
-                            <div class="col-1">
-
-                                <button type="button" wire:click="openFormItemBundle" name="" id="" class="btn btn-primary">Bundle</button>
-
-                            </div> 
-
-
                             
 
 

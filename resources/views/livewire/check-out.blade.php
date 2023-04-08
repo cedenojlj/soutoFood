@@ -128,13 +128,17 @@
                                 
                                                 <label for="emailRep" class="col-form-label text-md-end">Sales Rep</label>
                                                 
-                                                <input wire:model="emailRep" id="emailRep" type="emailRep" class="form-control @error('emailRep') is-invalid @enderror" name="emailRep" required>
+                                                {{-- <input wire:model="emailRep" id="emailRep" type="emailRep" class="form-control @error('emailRep') is-invalid @enderror" name="emailRep" required>
                                 
                                                 @error('emailRep')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                @enderror
+                                                @enderror --}}
+
+                                                <label class="form-control">{{ empty($this->Customer->emailRep)?'Sales Rep Email':$this->Customer->emailRep }}</label>
+
+
                                             </div>
                                         </div>
                                 
@@ -146,13 +150,17 @@
                                 
                                                 <label for="vendorEmail" class="col-form-label text-md-end">Email Vendor</label>
                                                 
-                                                <input wire:model="vendorEmail" id="vendorEmail" type="vendorEmail" class="form-control @error('vendorEmail') is-invalid @enderror" name="vendorEmail" required>
+                                               {{--  <input wire:model="vendorEmail" id="vendorEmail" type="vendorEmail" class="form-control @error('vendorEmail') is-invalid @enderror" name="vendorEmail" required> --}}
                                 
-                                                @error('vendorEmail')
+                                                {{-- @error('vendorEmail')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                @enderror
+                                                @enderror --}}
+
+                                                <label class="form-control">{{ Auth::user()->emailuser }}</label>
+
+
                                             </div>
                                         </div>
                                                             
@@ -188,7 +196,7 @@
                                                 <div class="input-group mb-3">
 
                                                     <span class="input-group-text">$</span>
-                                                    <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                    <input wire:model.debounce.1000ms="rebate" id="rebate" type="number" step=".01" class="form-control" aria-label="Amount (to the nearest dollar)">
                                                     {{-- <span class="input-group-text">.00</span> --}}
                                                 
                                                 </div>

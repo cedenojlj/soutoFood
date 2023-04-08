@@ -104,6 +104,15 @@ class CheckOut extends Component
     }
 
 
+    public function updatedRebate()
+    {
+        if ($this->rebate<0 or $this->rebate>10000) {
+            
+            $this->reset('rebate');
+        }
+    }
+
+
     public function submit()
     {
 
@@ -163,8 +172,13 @@ class CheckOut extends Component
             $order->comments = $this->comments;
             $order->customerEmail = $this->email;
             $order->customerEmail2 = $this->email2;
-            $order->saleRepEmail = $this->email;
-            $order->vendorEmail = $this->vendorEmail;
+
+           // $order->saleRepEmail = $this->email;
+           // $order->vendorEmail = $this->vendorEmail;
+
+            $order->saleRepEmail = $this->Customer->emailRep;
+            $order->vendorEmail = Auth::user()->emailuser;
+
             $order->rebate = $this->rebate;
             $order->idRebate = Str::ulid();
 

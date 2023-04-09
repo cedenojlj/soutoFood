@@ -6,7 +6,7 @@
             <tr>
                 <td></td>
                 <th style="font-size:16px"> <strong>Rebate #</strong></th>
-                <td style="font-size:16px; "><strong>{{$orden->rebate}}</strong></td>  
+                <td style="font-size:16px; "><strong>{{"$ ". number_format($orden->rebate,2)}}</strong></td>  
                 <td></td>   
                 <th style="font-size:16px"> <strong>Order:</strong></th>
                 <td style="font-size:16px; "><strong>{{ $orderDate}}</strong></td>               

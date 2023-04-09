@@ -39,7 +39,11 @@
 
         @endif
 
-        
+        <div class="form-group">
+            {{ Form::label('address') }}
+            {{ Form::text('address', $customer->address, ['class' => 'form-control' . ($errors->has('address') ? ' is-invalid' : ''), 'placeholder' => 'Address']) }}
+            {!! $errors->first('address', '<div class="invalid-feedback">:message</div>') !!}
+        </div>   
        
 
     </div>

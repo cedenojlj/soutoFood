@@ -1,3 +1,4 @@
+
 <div>
 
             @if ($status)
@@ -117,6 +118,20 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div>
+                                        </div>
+
+                                         {{-- customer address--}}
+
+                                         <div class="row mb-3">                
+                                
+                                            <div class="col-md-6">
+                                
+                                                <label for="addressBundle" class="col-form-label text-md-end">Customer Address</label>  
+
+                                                <label class="form-control">{{ empty($this->Customer->address)?'Customer Address':$this->Customer->address }}</label>
+
+
                                             </div>
                                         </div>
 
@@ -256,7 +271,8 @@
                             <h5>Order: <a href="{{url('export-order',[$lastId])}}" class="btn btn-primary">{{ $Customer->name . " - ". Auth::user()->name . " .xlsx" }}</a> </h5>
                             <h5>Date Order: {{$orderDate->format('m-d-Y')}}</h5>
                         
-                            <h5>Total Order: {{'$ ' . $total}}</h5>
+                            <h5>Total Order: {{'$ ' . number_format($total,2)}}</h5>
+                            <h5>Rebate: {{'$ ' . number_format($rebate,2)}}</h5>
 
                         </div>
 

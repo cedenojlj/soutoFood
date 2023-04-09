@@ -18,6 +18,7 @@ return new class extends Migration
             //$table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');            
             $table->integer('numBundle')->nullable();
             $table->float('priceBundle', 8, 2)->default(0);
+            $table->integer('qtyBundle')->default(0);
             
             $table->string('email'); 
             $table->foreign('email')->references('email')->on('users');

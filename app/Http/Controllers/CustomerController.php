@@ -117,6 +117,7 @@ class CustomerController extends Controller
         $customer->email2 = $request->email2;
         $customer->emailRep = $request->emailRep;
         $customer->pin =  $clave;
+        $customer->address = $request->address;
 
         $customer->save();
 

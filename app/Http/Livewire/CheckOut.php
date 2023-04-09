@@ -63,7 +63,7 @@ class CheckOut extends Component
 
     public $mostrarOrdenCreada = false;
 
-    public $statusEmail='';
+    public $statusEmail = '';
 
 
     protected $rules = [
@@ -106,10 +106,19 @@ class CheckOut extends Component
 
     public function updatedRebate()
     {
-        if ($this->rebate<0 or $this->rebate>10000) {
-            
+               
+        $control = intval($this->rebate);
+
+        $this->rebate= $control;
+
+
+        //dd($control);
+
+        if ($this->rebate <= 0 or $this->rebate > 10000) {
+
             $this->reset('rebate');
         }
+
     }
 
 
@@ -133,7 +142,6 @@ class CheckOut extends Component
         if ($this->pin != $this->Customer->pin) {
 
             $this->errores = 'The pin field is invalid.';
-
         } else {
 
             $this->errores = '';
@@ -146,7 +154,7 @@ class CheckOut extends Component
                 foreach (session('carrito') as $key => $item) {
 
                     // $total = $this->total + $item['finalprice'] * $item['amount'];
-                    
+
                     $totalorden = $totalorden + $item['finalprice'] * $item['amount'];
                 }
             }
@@ -173,8 +181,8 @@ class CheckOut extends Component
             $order->customerEmail = $this->email;
             $order->customerEmail2 = $this->email2;
 
-           // $order->saleRepEmail = $this->email;
-           // $order->vendorEmail = $this->vendorEmail;
+            // $order->saleRepEmail = $this->email;
+            // $order->vendorEmail = $this->vendorEmail;
 
             $order->saleRepEmail = $this->Customer->emailRep;
             $order->vendorEmail = Auth::user()->emailuser;
@@ -188,7 +196,7 @@ class CheckOut extends Component
 
             $this->orderDate = $order->created_at;
 
-            
+
 
             //$carrito = session('carrito');
 
@@ -241,24 +249,24 @@ class CheckOut extends Component
 
             session()->forget('carrito');
 
-            
+
 
             $this->general = 1; // para ocultar los demas campos y dejar solo el reporte
             // de orden creada   
-            
-            $this->status = 'Order Created Successfully'; 
 
-            $this->mostrarOrdenCreada=true;
+            $this->status = 'Order Created Successfully';
+
+            $this->mostrarOrdenCreada = true;
 
             $this->reset('pin');
 
             $this->reset('searchx');
-                     
 
-           //$this->enviandoEmail($order->id);
-            
-            
-           /*  try {
+
+            //$this->enviandoEmail($order->id);
+
+
+            /*  try {
 
                 $this->indexMail($order->id);
 
@@ -275,28 +283,25 @@ class CheckOut extends Component
  
                 return false;
 
-            }
- */
-          
+            }*/
+ 
         }
 
         if ($this->mostrarOrdenCreada) {
 
             //dd('entrado a la funcion de envio');
 
-            $this->enviandoEmail($order->id);            
-           
-        }    
-
+            $this->enviandoEmail($order->id);
+        }
     }
 
     public function enviandoEmail($id)
     {
         ///dd($id);
-        
+
         try {
 
-            
+
 
             $this->indexMail($id);
 
@@ -305,16 +310,13 @@ class CheckOut extends Component
 
                 $this->rebateMail($id);
             }
-
-           
         } catch (\Throwable $th) {
-            
+
             report($th);
 
-            $this->statusEmail='Emails not sent';
+            $this->statusEmail = 'Emails not sent';
 
             return false;
-
         }
     }
 

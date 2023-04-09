@@ -13,7 +13,7 @@
 
     <h3>{{'Date: ' . $emailData['dateOrder']}}</h3>
 
-    <h3>{{'Rebate: ' . $emailData['rebate']}}</h3>
+    <h3>{{'Rebate: ' . "$ ". number_format($emailData['rebate'],2)}}</h3>
 
     <h3>{{'Customer: ' . $emailData['customer']}}</h3>
 

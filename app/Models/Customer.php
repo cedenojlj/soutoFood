@@ -40,7 +40,8 @@ class Customer extends Model
             'email',
             'email2',
             'emailRep',
-            'pin'
+            'pin',
+            'address'
           ];
 
 

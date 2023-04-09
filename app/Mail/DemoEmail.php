@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Auth;
 
 class DemoEmail extends Mailable
 {
@@ -16,6 +17,7 @@ class DemoEmail extends Mailable
 
     public $emailData;
     public $reporte;
+    public $nameReport;
 
     /**
      * Create a new message instance.
@@ -24,6 +26,7 @@ class DemoEmail extends Mailable
     {
         $this->emailData= $emailData;
         $this->reporte = $reporte;
+        $this->nameReport = $emailData['customer'] . " - ". Auth::user()->name . ".xlsx";
     }
 
     /**
@@ -55,7 +58,8 @@ class DemoEmail extends Mailable
     {
         return [
 
-            Attachment::fromData(fn () => $this->reporte, 'report.xlsx'),
+            //Attachment::fromData(fn () => $this->reporte, 'report.xlsx'),
+            Attachment::fromData(fn () => $this->reporte, $this->nameReport),
         ];
     }
 }

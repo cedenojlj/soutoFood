@@ -377,6 +377,9 @@ class ProductContainer extends Component
 
 
                  $this->prices[]= $bundle['priceBundle'];
+
+                 $this->amount[]= $bundle['qtyBundle'];
+
             }
 
             //dd($this->items);
@@ -570,7 +573,7 @@ class ProductContainer extends Component
                    
                 }
             
-           } */
+           } */           
         
            if ($proceder) {
 
@@ -586,14 +589,26 @@ class ProductContainer extends Component
 
         } else {
 
+                    
 
-            $this->mensajex = 'Product added or updated successfully';
+            if ($proceder) {
 
-            $this->showCheckout=true;
+                $this->mensajex = 'Product added or updated successfully';
 
-            $this->showGeneral=false;
+                $this->showCheckout=true;
+    
+                $this->showGeneral=false;
+    
+                $this->mensajex = '';
 
-            $this->mensajex = '';
+                
+            } else {
+
+                $this->mensajex = 'You must select an item';
+                $this->mierror=true;
+                
+            }
+            
 
 
            // return redirect()->to('/checkout');

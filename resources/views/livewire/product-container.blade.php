@@ -4,33 +4,43 @@
     <div class="row">
         <div class="col-md-11 offset-md-1">
 
-            <h5>{{Auth::user()->name}}</h5>  
+            <h5>{{Auth::user()->name}}</h5>              
 
         </div>
     </div>
         
-    
+    <div class="row justify-content-center">
 
-                            
-               @if ($mensajex)
+        <div class="col-md-11">
+
+ 
+            @if ($mensajex)
 
 
                         @if ($mierror)
 
                             <div class="alert alert-danger" role="alert">
                                 {{$mensajex}}
-                            </div> 
+                            </div>                                
                     
                         @else
 
                             <div class="alert alert-success" role="alert">
                                 {{$mensajex}}
-                            </div> 
+                            </div>                           
                     
                         @endif   
 
                    
-               @endif
+            @endif
+
+
+        </div>
+
+    </div>
+
+                            
+               
 
              {{--  @if ($mostrarCheckout)
 

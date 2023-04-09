@@ -59,10 +59,10 @@
 
             <td style="border: 1px solid #000000;">{{ "0".$order->upc }}</td>
             <td style="border: 1px solid #000000;">{{ $order->pallet }}</td>
-            <td style="border: 1px solid #000000;">{{"$ ". $order->price }}</td>
-            <td style="border: 1px solid #000000;">{{ $order->notes }}</td>
+            <td style="border: 1px solid #000000;">{{"$ ". number_format($order->price,2) }}</td>
+            <td style="border: 1px solid #000000;">{{"$ ". number_format($order->notes,2) }}</td>
 
-            <td style="border: 1px solid #000000;">{{"$ ". $order->finalprice }}</td>
+            <td style="border: 1px solid #000000;">{{"$ ". number_format($order->finalprice,2) }}</td>
             <td style="border: 1px solid #000000;">{{ $order->qtyone }}</td>
             <td style="border: 1px solid #000000;">{{ $order->qtytwo }}</td>
             <td style="border: 1px solid #000000;">{{ $order->qtythree }}</td>          
@@ -88,13 +88,13 @@
 
         <tr>            
             <th style="font-size:14px"> <strong>Rebate</strong></th>
-            <td style="font-size:14px"><strong>{{"$ ". $orden->rebate}}</strong></td>  
+            <td style="font-size:14px"><strong>{{"$ ". number_format($orden->rebate,2)}}</strong></td>  
             
         </tr>    
         <tr>
             
             <th style="font-size:14px;"> <strong>Amount</strong></th>
-            <td style="font-size:14px"><strong>{{"$ ". $orden->total }}</strong></td>   
+            <td style="font-size:14px"><strong>{{"$ ". number_format($orden->total,2) }}</strong></td>   
             
                         
         </tr>          

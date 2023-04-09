@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email2')->nullable();
             $table->string('emailRep')->nullable();
             $table->string('pin');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

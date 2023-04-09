@@ -65,6 +65,8 @@ class CheckOut extends Component
 
     public $statusEmail = '';
 
+    public $tipoInput = 'text';
+
 
     protected $rules = [
 
@@ -106,7 +108,9 @@ class CheckOut extends Component
 
     public function updatedRebate()
     {
-               
+        
+        //dump('ver');
+        
         $control = intval($this->rebate);
 
         $this->rebate= $control;
@@ -122,12 +126,28 @@ class CheckOut extends Component
     }
 
 
+    public function updatingPin()
+    {
+        /* $replacenode = "/^[0-9]+$/";
+        $passsignupreplaced = preg_replace ($replacenode,"*", $this->pin);
+
+        $this->pin = $passsignupreplaced ; */
+
+        //dd($passsignupreplaced);
+
+        $this->tipoInput = 'password';
+
+
+    }
+
     public function submit()
     {
 
         //session()->forget('carrito');
 
         // dd('listo');
+
+        //$this->tipoInput = 'text';
 
         $this->emit('ocultar');
 
@@ -452,3 +472,4 @@ class CheckOut extends Component
         return view('livewire.check-out');
     }
 }
+

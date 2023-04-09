@@ -41,7 +41,7 @@
 
                                     <div class="col-md-6">                
                                         
-                                        <input type="text" class="col form-control" wire:model="searchx" autocomplete="nope">               
+                                        <input type="text" class="col form-control" wire:model="searchx" autocomplete="false">               
                                     
                                     </div>
 
@@ -188,7 +188,9 @@
                                 
                                                 <label for="pin" class="col-form-label">PIN</label>
                                 
-                                                <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="nope">
+                                                {{-- <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off"> --}}
+
+                                                <input wire:model="pin" id="pin" type="{{$tipoInput}}" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off">
                                 
                                                 @error('pin')
                                                     <span class="invalid-feedback" role="alert">
@@ -197,6 +199,8 @@
                                                 @enderror
                                             </div>
                                         </div> 
+
+                                        
 
                                         {{-- rebate  --}}
 

@@ -204,13 +204,13 @@
 
                                         {{-- Colocando la tabla --}}
 
-                                        <table class="table">
+                                        <table class="table table-bordered">
                                             <thead align="center">
                                               <tr>
                                                     <th scope="col">Order Qty</th>                                                    
                                                     <th scope="col" colspan="3">Description</th>
-                                                    {{-- <th scope="col">Scan Item UPC</th>
-                                                    <th scope="col">Cases per Pallet</th> --}}
+                                                    <th scope="col">Scan Item UPC</th>
+                                                    <th scope="col">Cases per Pallet</th>
                                                     <th scope="col">Food Show Deal</th>
                                                     <th scope="col">Notes $</th>
                                                     <th scope="col">Final Price $</th>                                                    
@@ -223,7 +223,11 @@
                                     
                                                 @php
                                     
-                                                    $total=0;
+                                                    $totalqty=0;
+                                                    $totalpallet=0;
+                                                    $totalqtyone=0;
+                                                    $totalqtytwo=0;
+                                                    $totalqtythree=0;
                                     
                                                 @endphp
                                     
@@ -234,7 +238,9 @@
                                     
                                                         <tr>
                                                             <td>{{ $item['amount'] }}</td>
-                                                            <td>{{ $item['name'] }}</td>
+                                                            <td colspan="3">{{ $item['name'] }}</td>
+                                                            <td>{{ $item['upc'] }}</td>
+                                                            <td>{{ $item['pallet'] }}</td>
                                                             <td>{{ '$ '. $item['price'] }}</td>
                                                             <td>{{ '$ '. $item['notes'] }}</td>
                                                             <td>{{ '$ '. $item['finalprice'] }}</td>
@@ -245,9 +251,27 @@
                                                         </tr> 
                                     
                                                         @php
-                                                            $total=$total+ ($item['amount'] * $item['finalprice']);
+                                                            $totalqty=$totalqty + $item['amount'];
+                                                            $totalpallet=$totalpallet + $item['pallet'];
+                                                            $totalqtyone=$totalqtyone + $item['qtyone'];
+                                                            $totalqtytwo=$totalqtytwo + $item['qtytwo'];
+                                                            $totalqtythree=$totalqtythree + $item['qtythree'];
                                                         @endphp
                                                     @endforeach 
+
+                                                        <tr>
+                                                            <td>{{ $totalqty }}</td>
+                                                            <td colspan="3"></td>
+                                                            <td></td>
+                                                            <td>{{ $totalpallet }}</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>{{ $totalqtyone }}</td>
+                                                            <td>{{ $totalqtytwo}}</td>
+                                                            <td>{{ $totalqtythree }}</td>
+                                                            
+                                                        </tr> 
                                     
                                                 @else
                                     
@@ -309,7 +333,7 @@
 
                                                 {{-- <button type="submit" class="btn btn-primary">Checkout</button>   --}}
                                                 <button wire:click="submit" type="button" class="btn btn-primary">Checkout</button>
-                                                
+                                                <button type="button" wire:click="$emit('regresar')" name="" id="" class="btn btn-primary">Back</button> 
 
                                             </div>
 

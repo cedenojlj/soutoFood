@@ -84,6 +84,8 @@ class CheckOut extends Component
     {
 
         $this->Customers = Customer::where('name', 'LIKE', '%' . $this->searchx . '%')->get();
+
+        $this->emit('ocultarBack');
     }
 
     /*  public function CaptarIdCliente()
@@ -103,6 +105,8 @@ class CheckOut extends Component
         $this->emailRep = $this->Customer->emailRep;
 
         $this->vendorEmail = Auth::user()->emailuser;
+
+        
     }
 
 
@@ -162,6 +166,7 @@ class CheckOut extends Component
         if ($this->pin != $this->Customer->pin) {
 
             $this->errores = 'The pin field is invalid.';
+
         } else {
 
             $this->errores = '';

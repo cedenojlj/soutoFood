@@ -78,7 +78,7 @@ class ProductContainer extends Component
     public $showBotonRetroceso = true;
 
 
-    protected $listeners = ['ocultar' => 'ocultar'];
+    protected $listeners = ['ocultar' => 'ocultar', 'regresar'=>'regresar', 'ocultarBack'=>'ocultarBack'];
 
 
     protected $rules = [
@@ -452,6 +452,8 @@ class ProductContainer extends Component
     public function save()
     {
 
+        $this->showBotonRetroceso = true;
+       
         if (empty($this->items)) {
 
             return false;
@@ -506,6 +508,7 @@ class ProductContainer extends Component
                     $this->indicador[$key] = 'table-success';
 
                     $proceder = true;
+                    $miproducto = Product::find($value['id']);
 
                     //******************************************* */
 
@@ -524,6 +527,8 @@ class ProductContainer extends Component
                             'qtytwo' => $this->qtytwo[$key],
                             'qtythree' => $this->qtythree[$key],
                             'finalprice' => $finalprice,
+                            'upc' => $miproducto->upc,
+                            'pallet' => $miproducto->pallet,
                         ]
 
                     ];
@@ -549,6 +554,8 @@ class ProductContainer extends Component
                             'qtytwo' => $this->qtytwo[$key],
                             'qtythree' => $this->qtythree[$key],
                             'finalprice' => $finalprice,
+                            'upc' => $miproducto->upc,
+                            'pallet' => $miproducto->pallet,
                         ];
 
                         session()->put('carrito', $carrito);
@@ -643,6 +650,11 @@ class ProductContainer extends Component
     }
 
     public function ocultar()
+    {
+        $this->showBotonRetroceso = false;
+    }
+
+    public function ocultarBack()
     {
         $this->showBotonRetroceso = false;
     }

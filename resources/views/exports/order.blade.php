@@ -30,17 +30,17 @@
 
 
 <table>
-    <thead>
+    <thead align="center">
     <tr>        
         <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   Qty </strong>  </th>
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   Item Number </strong>  </th> 
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   Description </strong>  </th> 
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   Scan Item UPC </strong>  </th>
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   Cases per Pallet </strong>  </th>
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   Food Show Deal </strong>  </th>
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Item Number </strong>  </th> 
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Description </strong>  </th> 
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Scan Item UPC </strong>  </th>
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Cases per Pallet </strong>  </th>
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Food Show Deal </strong>  </th>
         <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   Notes </strong>  </th>
 
-        <th style="background-color: #999793;border: 1px solid #000000;"><strong>   finalprice </strong>  </th>
+        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Final Price </strong>  </th>
         <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date1}} </strong>  </th>
         <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date2}} </strong>  </th>
         <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date3}} </strong>  </th>

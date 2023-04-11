@@ -20,6 +20,7 @@
             @endif
 
            <div class="text-center">
+
                 <div wire:loading.inline-flex wire:target="submit">       
 
                     <button class="btn btn-primary" type="button" disabled>
@@ -28,6 +29,7 @@
                     </button>
                     
                 </div>
+
             </div> 
 
 
@@ -200,7 +202,62 @@
                                             </div>
                                         </div> 
 
-                                        
+                                        {{-- Colocando la tabla --}}
+
+                                        <table class="table">
+                                            <thead align="center">
+                                              <tr>
+                                                    <th scope="col">Order Qty</th>                                                    
+                                                    <th scope="col" colspan="3">Description</th>
+                                                    {{-- <th scope="col">Scan Item UPC</th>
+                                                    <th scope="col">Cases per Pallet</th> --}}
+                                                    <th scope="col">Food Show Deal</th>
+                                                    <th scope="col">Notes $</th>
+                                                    <th scope="col">Final Price $</th>                                                    
+                                                    <th scope="col">{{Auth::user()->date1}}</th>
+                                                    <th scope="col">{{Auth::user()->date2}}</th>
+                                                    <th scope="col">{{Auth::user()->date3}}</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                    
+                                                @php
+                                    
+                                                    $total=0;
+                                    
+                                                @endphp
+                                    
+                                    
+                                                @if (session('carrito'))
+                                                                        
+                                                    @foreach (session('carrito') as $item)
+                                    
+                                                        <tr>
+                                                            <td>{{ $item['amount'] }}</td>
+                                                            <td>{{ $item['name'] }}</td>
+                                                            <td>{{ '$ '. $item['price'] }}</td>
+                                                            <td>{{ '$ '. $item['notes'] }}</td>
+                                                            <td>{{ '$ '. $item['finalprice'] }}</td>
+                                                            <td>{{ $item['qtyone'] }}</td>
+                                                            <td>{{ $item['qtytwo'] }}</td>
+                                                            <td>{{ $item['qtythree'] }}</td>
+                                                            
+                                                        </tr> 
+                                    
+                                                        @php
+                                                            $total=$total+ ($item['amount'] * $item['finalprice']);
+                                                        @endphp
+                                                    @endforeach 
+                                    
+                                                @else
+                                    
+                                                    <h6>No Product in the Cart</h6>  
+                                                                  
+                                                @endif  
+                                                
+                                            </tbody>   
+                                            
+                                        </table>
 
                                         {{-- rebate  --}}
 

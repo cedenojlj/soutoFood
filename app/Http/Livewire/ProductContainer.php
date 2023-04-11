@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ProductContainer extends Component
 {
     public $mensajex;
@@ -98,151 +100,140 @@ class ProductContainer extends Component
        // dd($propertyName);
     } */
 
-    
+
     public function updatedAmount($value, $key)
     {
-              
-       $value= intval($value);   
-       
-       //dd($value);
 
-       $clave= intval($key);  
+        $value = intval($value);
 
-       //$this->amount[$clave]='';
+        //dd($value);
+
+        $clave = intval($key);
+
+        //$this->amount[$clave]='';
 
 
-       //$this->reset($this->amount[$clave]);
+        //$this->reset($this->amount[$clave]);
 
-      if (($value <= 0) or $value > 999) {
+        if (($value <= 0) or $value > 999) {
 
-            $this->amount[$key]='';
+            $this->amount[$key] = '';
+        } else {
 
-        }else{
-
-            $this->amount[$key]= $value; 
-
+            $this->amount[$key] = $value;
         }
-
-    } 
+    }
 
     public function updatedQtyone($value, $key)
     {
-              
-       $value= intval($value);   
-       
-       //dd($value);
 
-       $clave= intval($key);  
+        $value = intval($value);
 
-       //$this->amount[$clave]='';
+        //dd($value);
+
+        $clave = intval($key);
+
+        //$this->amount[$clave]='';
 
 
-       //$this->reset($this->amount[$clave]);
+        //$this->reset($this->amount[$clave]);
 
-      if (($value <= 0) or $value > 999) {
+        if (($value <= 0) or $value > 999) {
 
-            $this->qtyone[$key]='';
+            $this->qtyone[$key] = '';
+        } else {
 
-        }else{
-
-            $this->qtyone[$key]= $value; 
-
+            $this->qtyone[$key] = $value;
         }
-        
-    } 
+    }
 
-    
+
     public function updatedQtytwo($value, $key)
     {
-              
-       $value= intval($value);   
-       
-       //dd($value);
 
-       $clave= intval($key);  
+        $value = intval($value);
 
-       //$this->amount[$clave]='';
+        //dd($value);
+
+        $clave = intval($key);
+
+        //$this->amount[$clave]='';
 
 
-       //$this->reset($this->amount[$clave]);
+        //$this->reset($this->amount[$clave]);
 
-      if (($value <= 0) or $value > 999) {
+        if (($value <= 0) or $value > 999) {
 
-            $this->qtytwo[$key]='';
+            $this->qtytwo[$key] = '';
+        } else {
 
-        }else{
-
-            $this->qtytwo[$key]= $value; 
-
+            $this->qtytwo[$key] = $value;
         }
-        
-    } 
+    }
 
     public function updatedQtythree($value, $key)
     {
-              
-       $value= intval($value);   
-       
-       //dd($value);
 
-       $clave= intval($key);  
+        $value = intval($value);
 
-       //$this->amount[$clave]='';
+        //dd($value);
+
+        $clave = intval($key);
+
+        //$this->amount[$clave]='';
 
 
-       //$this->reset($this->amount[$clave]);
+        //$this->reset($this->amount[$clave]);
 
-      if (($value <= 0) or $value > 999) {
+        if (($value <= 0) or $value > 999) {
 
-            $this->qtythree[$key]='';
+            $this->qtythree[$key] = '';
+        } else {
 
-        }else{
-
-            $this->qtythree[$key]= $value; 
-
+            $this->qtythree[$key] = $value;
         }
-        
-    } 
+    }
 
 
     public function updatedNotes($value, $key)
     {
-              
-       $value= floatval($value);   
-       
-       //dd($value);
 
-       $clave= intval($key);  
+        $value = floatval($value);
 
-       //$this->amount[$clave]='';
+        //dd($value);
 
+        $clave = intval($key);
 
-       //$this->reset($this->amount[$clave]);
+        //$this->amount[$clave]='';
 
-      if (($value <= 0)) {
+       // dd($this->items[$key]['price']);
 
-            $this->notes[$key]='';
+        $numPrice = $this->items[$key]['price'];
 
-        }else{
+        //$this->reset($this->amount[$clave]);
 
-            $this->notes[$key]= $value; 
+        if (($value <= 0 or $value> $numPrice)) {
 
+            $this->notes[$key] = '';
+
+        } else {
+
+            $this->notes[$key] = $value;
         }
-        
-    } 
+    }
 
 
 
 
-    
+
 
     public function mount()
     {
-       //$productos = Product::where('user_id', Auth::user()->id)->orderBy('prioridad')->get();
+        //$productos = Product::where('user_id', Auth::user()->id)->orderBy('prioridad')->get();
 
-       //$productos = Product::where('user_id', Auth::user()->id)->get();
+        //$productos = Product::where('user_id', Auth::user()->id)->get();
 
-       // $productos = Product::where('user_id', Auth::id())->orderBy('prioridad')->get();
+        // $productos = Product::where('user_id', Auth::id())->orderBy('prioridad')->get();
 
         $productos = Product::where('email', Auth::user()->email)->orderBy('prioridad')->get();
 
@@ -261,8 +252,8 @@ class ProductContainer extends Component
                 'pallet' => $value['pallet'],
                 'price' => $value['price'],
             ];
-            
-            $this->prices[$key]=$value['price'];
+
+            $this->prices[$key] = $value['price'];
         }
 
         unset($value);
@@ -295,7 +286,7 @@ class ProductContainer extends Component
                 'price' => $producto['price'],
             ];
 
-            $this->prices[]=$producto['price'];
+            $this->prices[] = $producto['price'];
 
 
             $this->mensajex = 'Product added or updated successfully';
@@ -306,7 +297,7 @@ class ProductContainer extends Component
 
             $this->mostrarItems = true;
 
-           
+
 
             $this->reset('search');
 
@@ -334,11 +325,16 @@ class ProductContainer extends Component
 
     public function openFormItem()
     {
+
+        if (empty($this->items)) {
+
+            return false;
+        }
+
         $this->mostrarItems = false;
         $this->mensajex = '';
         $this->showFormItems = true;
         $this->showFormItemsBundle = false;
-       
     }
 
 
@@ -353,15 +349,31 @@ class ProductContainer extends Component
 
             //dd($this->items);
 
-           // $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('user_id', Auth::id())->get();
+            // $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('user_id', Auth::id())->get();
 
             $bundles = Bundle::where('numBundle', $this->idProductBundle)->where('email', Auth::user()->email)->get();
 
+
+            /* if ($bundles->isEmpty()) {
+
+               $this->closeItemBundle();
+
+            } */
+
             //dd($bundles);
 
+            $keyBundle = 0;
 
-            foreach ($bundles as $bundle) {               
-              
+            if (count($this->items)>0) {
+
+                $keyBundle = count($this->items);
+               
+            } 
+            
+
+
+            foreach ($bundles as $bundle) {
+
                 $productBundle = Product::where('itemnumber', $bundle['itemnumber'])->first();
 
                 $this->items[] = [
@@ -376,9 +388,11 @@ class ProductContainer extends Component
                 ];
 
 
-                 $this->prices[]= $bundle['priceBundle'];
+                $this->prices[] = $bundle['priceBundle'];
 
-                 $this->amount[]= $bundle['qtyBundle'];
+                $this->amount[$keyBundle] = $bundle['qtyBundle'];
+
+                $keyBundle = $keyBundle + 1;
 
             }
 
@@ -386,7 +400,7 @@ class ProductContainer extends Component
             unset($bundle);
             $productBundle = '';
 
-
+            $this->mierror = false;
             $this->mensajex = 'Product added or updated successfully';
 
             $this->showFormItemsBundle = false;
@@ -414,17 +428,23 @@ class ProductContainer extends Component
 
     public function openFormItemBundle()
     {
+
+        if (empty($this->items)) {
+
+            return false;
+
+        }
+
         $this->mostrarItems = false;
         $this->mensajex = '';
         $this->showFormItemsBundle = true;
         $this->showFormItems = false;
-       
     }
 
 
     public function updatedSearch()
     {
-       // $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->get();
+        // $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::id())->get();
 
         $this->listaProductos = Product::where('name', 'LIKE', '%' . $this->search . '%')->where('email', Auth::user()->email)->orWhere('itemnumber', 'LIKE', '%' . $this->search . '%')->where('email', Auth::user()->email)->get();
     }
@@ -432,17 +452,21 @@ class ProductContainer extends Component
     public function save()
     {
 
-        
+        if (empty($this->items)) {
 
-       //session()->forget('carrito');
+            return false;
+        }
+        // dd(count($this->items));
+
+        //session()->forget('carrito');
 
 
-        $proceder=false;
+        $proceder = false;
 
         foreach ($this->items as $key => $value) {
 
 
-            if (isset($this->amount[$key])) {
+            if (!empty($this->amount[$key])) {
 
                 if ($this->amount[$key] < 0) {
 
@@ -481,7 +505,7 @@ class ProductContainer extends Component
                     $this->mierror = false;
                     $this->indicador[$key] = 'table-success';
 
-                    $proceder=true;
+                    $proceder = true;
 
                     //******************************************* */
 
@@ -559,9 +583,9 @@ class ProductContainer extends Component
             $this->mensajex = 'The quantity must be equal to 
                 the sum of the quantity One, two and three, only valid items were added';
 
-           //dd(count($carrito));
+            //dd(count($carrito));
 
-           /* if (isset($carrito)) {
+            /* if (isset($carrito)) {
 
                 if (count($carrito)>0) {
 
@@ -573,9 +597,10 @@ class ProductContainer extends Component
                    
                 }
             
-           } */           
-        
-           if ($proceder) {
+           } */
+
+
+            /*  if ($proceder) {
 
                 $this->showCheckout=true;
 
@@ -583,52 +608,45 @@ class ProductContainer extends Component
         
                 $this->mensajex = '';           
         
-           }
-           
-
-
+           } */
         } else {
 
-                    
+
 
             if ($proceder) {
 
                 $this->mensajex = 'Product added or updated successfully';
 
-                $this->showCheckout=true;
-    
-                $this->showGeneral=false;
-    
-                $this->mensajex = '';
+                $this->showCheckout = true;
 
-                
+                $this->showGeneral = false;
+
+                $this->mensajex = '';
             } else {
 
                 $this->mensajex = 'You must select an item';
-                $this->mierror=true;
-                
+                $this->mierror = true;
             }
-            
 
 
-           // return redirect()->to('/checkout');
+
+            // return redirect()->to('/checkout');
 
         }
-
     }
 
     public function regresar()
     {
-        $this->showCheckout=false;
+        $this->showCheckout = false;
 
-        $this->showGeneral=true;
+        $this->showGeneral = true;
     }
 
     public function ocultar()
     {
-        $this->showBotonRetroceso=false;
+        $this->showBotonRetroceso = false;
     }
-  
+
     public function render()
     {
         $user = User::find(Auth::id());
@@ -641,7 +659,3 @@ class ProductContainer extends Component
         ]);
     }
 }
-
- 
-
-

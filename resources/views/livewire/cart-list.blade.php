@@ -54,9 +54,11 @@
 
                 <h6>No Product in the Cart</h6>  
                               
-            @endif     
+            @endif  
+            
+        </tbody>   
         
-      </table>
+    </table>
 
       
 

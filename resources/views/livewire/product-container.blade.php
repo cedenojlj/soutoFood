@@ -283,19 +283,15 @@
 
                             <div class="col-md-11">                            
 
-                                <div class="row justify-content-end">
+                                <div class="row">
 
-                                    <div class="col col-md-1">
+                                    <div class="col col-md-11">
 
                                         <button type="button" wire:click="openFormItem" name="" id="" class="btn btn-primary">AddItem</button>
-    
-                                    </div>
-    
-                                    <div class="col col-md-1">
-    
                                         <button type="button" wire:click="openFormItemBundle" name="" id="" class="btn btn-primary">Bundle</button>
     
-                                    </div> 
+                                    </div>   
+                                   
     
                                     <div class="col col-md-1">
     
@@ -320,7 +316,7 @@
 
                                     <table class="table table-sm table-bordered">
 
-                                            <thead align="center">
+                                            <thead align="center" class="align-top">
                                                 <tr>
                                                     <th scope="col">Order Qty</th>
                                                     {{-- <th scope="col">Item text</th> --}}

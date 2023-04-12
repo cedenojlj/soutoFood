@@ -34,8 +34,8 @@
                 <div class="d-flex justify-content-between shadow-sm">
                 
                     
-                        <div class="pt-2 "><img src="{{asset('img/logo1.jpg')}}" alt="" width="100" height="80"></div>
-                        <div class="pt-2"><h2>Souto Foods Festival</h2></div> 
+                        <div class="pt-2 px-5"><img src="{{asset('img/logo1.jpg')}}" alt="" width="100" height="80"></div>
+                        <div class="pt-2 ps-5"><h2>Souto Foods Festival</h2></div> 
                         <div class="pt-2">
                             
                             <div class="container-fluid">

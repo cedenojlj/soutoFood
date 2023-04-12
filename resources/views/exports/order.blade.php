@@ -30,20 +30,20 @@
 
 
 <table>
-    <thead align="center">
+    <thead>
     <tr>        
-        <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   Qty </strong>  </th>
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Item Number </strong>  </th> 
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Description </strong>  </th> 
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Scan Item UPC </strong>  </th>
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Cases per Pallet </strong>  </th>
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Food Show Deal </strong>  </th>
-        <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   Notes </strong>  </th>
+        <th style="background-color: #fcbf43;border: 1px solid #000000;" align="center" ><strong>   Qty </strong>  </th>
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Item Number </strong>  </th> 
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Description </strong>  </th> 
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Scan Item UPC </strong>  </th>
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Cases per Pallet </strong>  </th>
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Food Show Deal </strong>  </th>
+        <th style="background-color: #fcbf43;border: 1px solid #000000;" align="center" ><strong>   Notes </strong>  </th>
 
-        <th style="background-color: #17A2B8;border: 1px solid #000000;"><strong>   Final Price </strong>  </th>
-        <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date1}} </strong>  </th>
-        <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date2}} </strong>  </th>
-        <th style="background-color: #fcbf43;border: 1px solid #000000;"><strong>   {{$date3}} </strong>  </th>
+        <th style="background-color: #6bc7e0;border: 1px solid #000000;" align="center" ><strong>   Final Price </strong>  </th>
+        <th style="background-color: #fcbf43;border: 1px solid #000000;" align="center" ><strong>   {{$date1}} </strong>  </th>
+        <th style="background-color: #fcbf43;border: 1px solid #000000;" align="center" ><strong>   {{$date2}} </strong>  </th>
+        <th style="background-color: #fcbf43;border: 1px solid #000000;" align="center" ><strong>   {{$date3}} </strong>  </th>
     </tr>
     </thead>
     <tbody>

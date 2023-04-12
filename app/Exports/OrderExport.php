@@ -38,7 +38,7 @@ class OrderExport implements FromView, ShouldAutoSize, WithDrawings
         $drawing->setDescription('This is my logo');
         $drawing->setPath(public_path('/img/logo1.jpg'));
         $drawing->setHeight(90);
-        $drawing->setCoordinates('J1');
+        $drawing->setCoordinates('J2');
 
         return $drawing;
     }

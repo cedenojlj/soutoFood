@@ -222,7 +222,7 @@
                                             <tbody>
                                     
                                                 @php
-                                    
+                                                    $total =0;
                                                     $totalqty=0;
                                                     $totalpallet=0;
                                                     $totalqtyone=0;
@@ -256,6 +256,7 @@
                                                             $totalqtyone=$totalqtyone + $item['qtyone'];
                                                             $totalqtytwo=$totalqtytwo + $item['qtytwo'];
                                                             $totalqtythree=$totalqtythree + $item['qtythree'];
+                                                            $total = $total + $item['amount'] * $item['finalprice'];
                                                         @endphp
                                                     @endforeach 
 
@@ -263,13 +264,20 @@
                                                             <td>{{ $totalqty }}</td>
                                                             <td colspan="3"></td>
                                                             <td></td>
-                                                            <td>{{ $totalpallet }}</td>
+                                                            <td></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td>{{ $totalqtyone }}</td>
                                                             <td>{{ $totalqtytwo}}</td>
                                                             <td>{{ $totalqtythree }}</td>
+                                                            
+                                                        </tr> 
+
+                                                        <tr>
+                                                            <td><strong>Total Order:</strong></td>
+                                                            <td colspan="9"><strong>{{ '$ '. number_format($total,2) }}</strong></td>
+                                                            
                                                             
                                                         </tr> 
                                     

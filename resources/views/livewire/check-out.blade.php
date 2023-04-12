@@ -21,7 +21,7 @@
 
            <div class="text-center">
 
-                <div wire:loading.inline-flex wire:target="submit">       
+                <div wire:loading.inline-flex wire:target="procesarPedido">       
 
                     <button class="btn btn-primary" type="button" disabled>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -39,23 +39,29 @@
                         
                                 {{-- search  --}} 
 
-                                <div class="row mb-4 mt-2" wire:loading.remove wire:target="submit">           
+                                @if ($mostrarPin)   
 
-                                    <div class="col-md-6">                
-                                        
-                                        <input type="text" class="col form-control" wire:model="searchx" autocomplete="false">               
-                                    
-                                    </div>
-
-                                    {{-- <div class="col-md-6">                
-                                        
-                                        <button class="btn btn-primary" wire:click="CaptarIdCliente">Search Customer</button>
-                                    
-                                    </div> --}}
-                                </div> 
                                 
-                                {{-- <form wire:submit.prevent="submit" wire:loading.remove wire:target="submit" autocomplete="off">  --}}
-                                <div wire:loading.remove wire:target="submit">           
+                                    <div class="row mb-4 mt-2" wire:loading.remove wire:target="procesarPedido">           
+
+                                        <div class="col-md-6">                
+                                            
+                                            <input type="text" class="col form-control" wire:model="searchx" autocomplete="off">               
+                                        
+                                        </div>
+
+                                        {{-- <div class="col-md-6">                
+                                            
+                                            <button class="btn btn-primary" wire:click="CaptarIdCliente">Search Customer</button>
+                                        
+                                        </div> --}}
+                                    </div> 
+
+
+                                @endif
+                                    
+                                {{-- <form wire:procesarPedido.prevent="procesarPedido" wire:loading.remove wire:target="procesarPedido" autocomplete="off">  --}}
+                                <div wire:loading.remove wire:target="procesarPedido">           
 
                                     @if (!empty($searchx))
 
@@ -184,23 +190,27 @@
                                         
                                         {{-- pin customer  --}}
 
-                                        <div class="row mb-3">                
-                                
-                                            <div class="col-md-6">
-                                
-                                                <label for="pin" class="col-form-label">PIN</label>
-                                
-                                                {{-- <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off"> --}}
+                                        @if ($mostrarPin)                                                                                 
 
-                                                <input wire:model="pin" id="pin" type="{{$tipoInput}}" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off">
-                                
-                                                @error('pin')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="row mb-3">                
+                                    
+                                                <div class="col-md-6">
+                                    
+                                                    <label for="pin" class="col-form-label">PIN</label>
+                                    
+                                                    {{-- <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off"> --}}
+
+                                                    <input wire:model="pin" id="pin" type="{{$tipoInput}}" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="new-password">
+                                    
+                                                    @error('pin')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                        </div> 
+                                            
+                                        @endif
 
                                         {{-- Colocando la tabla --}}
 
@@ -333,14 +343,14 @@
                                             </div>
                                         </div>
 
-                                        {{-- submit  --}}
+                                        {{-- procesarPedido  --}}
 
                                         <div class="row mb-3">
 
                                             <div class="col-md-6">
 
-                                                {{-- <button type="submit" class="btn btn-primary">Checkout</button>   --}}
-                                                <button wire:click="submit" type="button" class="btn btn-primary">Checkout</button>
+                                                {{-- <button type="procesarPedido" class="btn btn-primary">Checkout</button>   --}}
+                                                <button wire:click="procesarPedido" type="button" class="btn btn-primary">Checkout</button>
                                                 <button type="button" wire:click="$emit('regresar')" name="" id="" class="btn btn-primary">Back</button> 
 
                                             </div>

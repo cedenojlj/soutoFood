@@ -67,6 +67,8 @@ class CheckOut extends Component
 
     public $tipoInput = 'text';
 
+    public $mostrarPin = true;
+
 
     protected $rules = [
 
@@ -144,14 +146,14 @@ class CheckOut extends Component
 
     }
 
-    public function submit()
+    public function procesarPedido()
     {
 
         //session()->forget('carrito');
 
         // dd('listo');
 
-        //$this->tipoInput = 'text';
+        $this->tipoInput = 'text';
 
         $this->emit('ocultar');
 

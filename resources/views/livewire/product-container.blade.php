@@ -363,7 +363,7 @@
                                                                     <input wire:model.debounce.1000ms="amount.{{$key}}" 
                                                                     id="amount" type="number"  
                                                                     class="form-control bg-info @error('amount.'.$key) is-invalid @enderror" 
-                                                                    name="amount" required autofocus >
+                                                                    name="amount" required autofocus max="999">
                                                                     
                                                                     <span class="error">
                                                                         @error('amount.'.$key) {{ $message }} @enderror
@@ -393,7 +393,7 @@
                                     
                                                                 <td><input wire:model.debounce.1000ms="notes.{{$key}}" 
                                                                     id="notes" type="number" 
-                                                                    class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$">
+                                                                    class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$" step="0.01">
                                                                 
                                                                     <span class="error">
                                                                         @error('notes.'.$key) {{ $message }} @enderror

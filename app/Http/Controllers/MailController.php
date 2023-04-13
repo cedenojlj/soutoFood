@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Exports\RebateExport;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class MailController extends Controller
 {
@@ -28,6 +29,8 @@ class MailController extends Controller
         $customer= Customer::find($orden->customer_id)->name;
        
         $tittle = 'Order Created ' .$numberOrder; 
+
+        $subjectEmail = 'Souto Foods Festival - '.  $customer . ' - ' . Auth::user()->name;
        
         $emailData=[
 
@@ -35,6 +38,7 @@ class MailController extends Controller
             'body'=>'',
             'dateOrder' => $dateOrder,
             'customer' => $customer,
+            'subjectEmail' => $subjectEmail 
 
         ];
 
@@ -58,7 +62,8 @@ class MailController extends Controller
             $destinatarios[]=[$orden->saleRepEmail];
         }
 
-
+       
+        $destinatarios[]=['sales@soutofoodsfestival.com'];
 
 
         $reporte = Excel::raw(new OrderExport($id), \Maatwebsite\Excel\Excel::XLSX);
@@ -85,13 +90,17 @@ class MailController extends Controller
         $customer= Customer::find($orden->customer_id)->name;
        
         $tittle = 'Rebate Order Created ' .$numberOrder; 
-       
+
+        $subjectEmail = 'Souto Foods Festival - '.  $customer . ' - ' . Auth::user()->name . ' - Rebate';
+
+               
         $emailData=[
 
             'title'=> $tittle,
             'body'=>'',
             'dateOrder' => $dateOrder,
             'customer' => $customer,
+            'subjectEmail' => $subjectEmail 
 
         ];
 
@@ -117,7 +126,7 @@ class MailController extends Controller
             $destinatarios[]=[$orden->saleRepEmail];
         }
 
-
+        $destinatarios[]=['rebates@soutofoodsfestival.com'];
 
 
         $reporte = Excel::raw(new RebateExport($id), \Maatwebsite\Excel\Excel::XLSX);

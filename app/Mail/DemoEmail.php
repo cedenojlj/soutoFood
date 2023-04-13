@@ -18,6 +18,7 @@ class DemoEmail extends Mailable
     public $emailData;
     public $reporte;
     public $nameReport;
+    public $nameSubject;
 
     /**
      * Create a new message instance.
@@ -27,6 +28,7 @@ class DemoEmail extends Mailable
         $this->emailData= $emailData;
         $this->reporte = $reporte;
         $this->nameReport = $emailData['customer'] . " - ". Auth::user()->name . ".xlsx";
+        $this->nameSubject = Auth::user()->name;
     }
 
     /**
@@ -35,7 +37,8 @@ class DemoEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'SoutoFoods',
+
+            subject:'Souto Foods Festival'. " - ". $this->emailData['customer']. " - ". Auth::user()->name,
         );
     }
 

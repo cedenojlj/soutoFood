@@ -101,6 +101,33 @@ class ProductContainer extends Component
     } */
 
 
+
+    public function verificarAmount($key)
+    {
+        
+        if (empty($this->qtyone[$key])) {
+            
+            $this->qtyone[$key] = 0;
+        }
+
+       
+        if (empty($this->qtytwo[$key])) {
+            
+            $this->qtytwo[$key] = 0;
+        }
+
+        if (empty($this->qtythree[$key])) {
+            
+            $this->qtythree[$key] = 0;
+        }
+
+        if (empty($this->amount[$key])) {
+            
+            $this->amount[$key] =  $this->qtyone[$key] +  $this->qtytwo[$key] + $this->qtythree[$key];
+        }
+    }
+
+
     public function updatedAmount($value, $key)
     {
 
@@ -115,13 +142,23 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0) or $value > 999) {
+        if (($value <= 0)  ) {
 
             $this->amount[$key] = '';
+
+        } elseif ($value > 999) {
+            
+            $this->amount[$key] = 999;
+
         } else {
 
             $this->amount[$key] = $value;
         }
+
+       
+
+
+
     }
 
     public function updatedQtyone($value, $key)
@@ -138,13 +175,21 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0) or $value > 999) {
+        if (($value <= 0) ) {
 
             $this->qtyone[$key] = '';
-        } else {
+
+        } elseif ($value > 999) {
+
+            $this->qtyone[$key] = 999;
+
+        }else {
 
             $this->qtyone[$key] = $value;
         }
+    
+        $this->verificarAmount($key);
+
     }
 
 
@@ -162,13 +207,23 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0) or $value > 999) {
+        if (($value <= 0)) {
 
             $this->qtytwo[$key] = '';
-        } else {
+
+        } elseif ($value > 999) {
+
+            $this->qtytwo[$key] = 999;
+
+        }else {
 
             $this->qtytwo[$key] = $value;
         }
+
+
+        $this->verificarAmount($key);
+
+
     }
 
     public function updatedQtythree($value, $key)
@@ -185,13 +240,23 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0) or $value > 999) {
+        if (($value <= 0)) {
 
             $this->qtythree[$key] = '';
-        } else {
+
+        } elseif ($value > 999) {
+
+            $this->qtythree[$key] = 999;
+
+        }else {
 
             $this->qtythree[$key] = $value;
         }
+
+
+        $this->verificarAmount($key);
+
+
     }
 
 
@@ -218,14 +283,9 @@ class ProductContainer extends Component
 
         } else {
 
-            $this->notes[$key] = $value;
+            $this->notes[$key] = number_format($value,2) ;
         }
     }
-
-
-
-
-
 
     public function mount()
     {
@@ -271,7 +331,7 @@ class ProductContainer extends Component
 
         //dd($producto);
 
-        // dd($this->items);
+        //dump(count($this->items));
 
         if (isset($producto['id'])) {
 
@@ -291,13 +351,17 @@ class ProductContainer extends Component
 
             $this->mensajex = 'Product added or updated successfully';
 
-            // dd($this->items);
+            //dd(count($this->items));
 
             $this->showFormItems = false;
 
             $this->mostrarItems = true;
 
+            if (!empty($this->items)) {
 
+                $this->indicador[count($this->items)-1] = 'bg-warning';
+                
+            }    
 
             $this->reset('search');
 
@@ -364,7 +428,7 @@ class ProductContainer extends Component
 
             $keyBundle = 0;
 
-            if (count($this->items)>0) {
+            if (!empty($this->items)) {
 
                 $keyBundle = count($this->items);
                
@@ -391,6 +455,12 @@ class ProductContainer extends Component
                 $this->prices[] = $bundle['priceBundle'];
 
                 $this->amount[$keyBundle] = $bundle['qtyBundle'];
+
+                if (!empty($this->items)) {
+
+                    $this->indicador[count($this->items)-1] = 'bg-warning';
+                    
+                }    
 
                 $keyBundle = $keyBundle + 1;
 

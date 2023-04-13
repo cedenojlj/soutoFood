@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Support\Facades\Auth;
 
 class RebateMail extends Mailable
 {
@@ -34,7 +35,8 @@ class RebateMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'SoutoFoods',
+           /*  subject:  $this->emailData['subjectEmail'], */
+            subject:'Souto Foods Festival'. " - ". $this->emailData['customer']. " - ". Auth::user()->name . " - Rebate",
         );
     }
 

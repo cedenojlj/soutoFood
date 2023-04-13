@@ -92,6 +92,20 @@
                                             </div>
                                 
                                         </div>
+
+                                        {{-- customer address--}}
+
+                                        <div class="row mb-3">                
+                                
+                                            <div class="col-md-6">
+                                
+                                                <label for="addressBundle" class="col-form-label text-md-end">Customer Address</label>  
+
+                                                <label class="form-control">{{ empty($this->Customer->address)?'Customer Address':$this->Customer->address }}</label>
+
+
+                                            </div>
+                                        </div>
                                 
                                         {{-- email customer  --}}
 
@@ -127,21 +141,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-
-                                         {{-- customer address--}}
-
-                                         <div class="row mb-3">                
-                                
-                                            <div class="col-md-6">
-                                
-                                                <label for="addressBundle" class="col-form-label text-md-end">Customer Address</label>  
-
-                                                <label class="form-control">{{ empty($this->Customer->address)?'Customer Address':$this->Customer->address }}</label>
-
-
-                                            </div>
-                                        </div>
+                                        </div>                                         
 
                                         {{-- Sales Rep  email--}}
 

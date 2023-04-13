@@ -21,6 +21,7 @@
 
             @php
                 $totalizador=0;
+                $totalRebate=0;
             @endphp
 
                 <div class="card mb-3">
@@ -53,15 +54,21 @@
                                 </td>
                               </tr> 
                               @php
-                                  $totalizador = $totalizador + $order->total
+                                  $totalizador = $totalizador + $order->total;
+                                  $totalRebate =  $totalRebate + $order->rebate;
                               @endphp
                               @endforeach
                               
                               <tr>
                                 <th scope="row" colspan="3">Total:</th>                                
-                                <td colspan="2">
+                                <td>
                                    <strong>{{'$ '.number_format($totalizador,2)}}</strong> 
                                 </td>
+
+                                <td>
+                                  <strong>{{'$ '.number_format($totalRebate,2)}}</strong> 
+                               </td>
+
                               </tr> 
 
 

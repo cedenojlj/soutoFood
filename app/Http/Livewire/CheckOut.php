@@ -90,12 +90,7 @@ class CheckOut extends Component
         $this->emit('ocultarBack');
     }
 
-    /*  public function CaptarIdCliente()
-    {
-        $this->Customers= Customer::where('name','LIKE','%'.$this->searchx.'%')->get();
-       
-    } */
-
+    
     public function updatedidCustomer()
     {
         $this->Customer = Customer::find($this->idCustomer);
@@ -143,17 +138,20 @@ class CheckOut extends Component
 
         $this->tipoInput = 'password';
 
+        $this->errores = '';
+
 
     }
 
     public function procesarPedido()
     {
 
+        $this->errores = '';
         //session()->forget('carrito');
 
         // dd('listo');
 
-        $this->tipoInput = 'text';
+        $this->tipoInput = 'text';        
 
         $this->emit('ocultar');
 
@@ -161,13 +159,14 @@ class CheckOut extends Component
 
         $totalorden = 0;
 
-        // Execution doesn't reach here if validation fails.
-
-        //dd('PIN: '.$this->pin. ' CustomerPIN: '.$this->Customer->pin );
+        
 
         if ($this->pin != $this->Customer->pin) {
 
+            $this->tipoInput = 'password';
+
             $this->errores = 'The pin field is invalid.';
+
 
         } else {
 
@@ -222,13 +221,7 @@ class CheckOut extends Component
             $this->lastId = $order->id;
 
             $this->orderDate = $order->created_at;
-
-
-
-            //$carrito = session('carrito');
-
-            //dd($carrito);
-
+         
 
             if (session()->has('carrito')) {
 
@@ -288,29 +281,7 @@ class CheckOut extends Component
             $this->reset('pin');
 
             $this->reset('searchx');
-
-
-            //$this->enviandoEmail($order->id);
-
-
-            /*  try {
-
-                $this->indexMail($order->id);
-
-
-                if ($this->rebate > 0) {
-
-                    $this->rebateMail($order->id);
-                }
-
-               
-            } catch (\Throwable $th) {
-                
-                report($th);
- 
-                return false;
-
-            }*/
+            
  
         }
 
@@ -320,6 +291,8 @@ class CheckOut extends Component
 
             $this->enviandoEmail($order->id);
         }
+
+
     }
 
     public function enviandoEmail($id)
@@ -400,8 +373,6 @@ class CheckOut extends Component
             Mail::to($value)->send(new DemoEmail($emailData, $reporte));
         }
     }
-
-
 
     public function rebateMail($id)
     {

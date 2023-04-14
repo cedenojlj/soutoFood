@@ -136,53 +136,14 @@ class CheckOut extends Component
 
     public function updatingPin($value)
     {
-        /* $ensayo='';
-
-        for ($i=0; $i < strlen($value) ; $i++) { 
-            
-            if ($value[$i]!="*") {
-
-                $ensayo = $ensayo . $value[$i];
-            }
-        }        
         
-        $this->control = $ensayo; */
-
-        $this->tipoInput='password';
 
     }
     
     public function updatedPin($clave)
     {
        
-        /* if (strlen($clave)>0) {
-           
-            
-            $this->errores = '';  
-            
-            $miClave = strlen($clave)-1;
-
-            $pass = $clave;
-
-            $this->acumulador= $this->acumulador . '*';
-
-            if ( strlen($clave) == 1) {
-
-                $this->verificar = $this->verificar . $clave;
-
-            } else {
-            
-                $this->verificar = $this->verificar . $pass[$miClave];
-            }
-            
-                        
-           $this->pin = $this->acumulador;
-
-
-
-
-        } */
-          
+        $this->errores = '';         
              
     }
    
@@ -209,17 +170,11 @@ class CheckOut extends Component
 
        
 
-        if ($miPin != $this->Customer->pin) {
-
-            $this->tipoInput = 'password';
+        if ($miPin != $this->Customer->pin) {           
 
             $this->errores = 'The pin field is invalid.';
 
-            $this->reset('pin');
-
-            $this->verificar='';
-
-            $this->acumulador='';
+            $this->reset('pin');           
 
 
         } else {
@@ -323,7 +278,7 @@ class CheckOut extends Component
 
             session()->forget('carrito');
 
-            $this->enviandoEmail($order->id);
+           //$this->enviandoEmail($order->id);
 
            // return redirect()->to('/home');
 
@@ -421,7 +376,10 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
-        //dd($destinatarios);
+            //$destinatarios[] = 'sales@soutofoodsfestival.com';
+       
+       
+        // dd($destinatarios);
 
 
         $reporte = Excel::raw(new OrderExport($id), \Maatwebsite\Excel\Excel::XLSX);
@@ -431,6 +389,8 @@ class CheckOut extends Component
 
             Mail::to($value)->send(new DemoEmail($emailData, $reporte));
         }
+
+        unset($destinatarios);
     }
 
     public function rebateMail($id)
@@ -479,6 +439,7 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
+         //$destinatarios[]='rebates@soutofoodsfestival.com';
 
 
         $reporte = Excel::raw(new RebateExport($id), \Maatwebsite\Excel\Excel::XLSX);

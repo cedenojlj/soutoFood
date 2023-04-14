@@ -368,10 +368,14 @@
 
                                         <div class="row mb-3">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-11">
+                                                
+                                                <button wire:click="procesarPedido" type="button" class="btn btn-primary">Checkout</button>                                                
 
-                                                {{-- <button type="procesarPedido" class="btn btn-primary">Checkout</button>   --}}
-                                                <button wire:click="procesarPedido" type="button" class="btn btn-primary">Checkout</button>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                
                                                 <button type="button" wire:click="$emit('regresar')" name="" id="" class="btn btn-primary">Back</button> 
 
                                             </div>

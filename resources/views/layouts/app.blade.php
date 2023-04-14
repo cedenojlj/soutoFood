@@ -26,6 +26,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <style>
+
+        @font-face {
+
+            font-family: text-security-disc;
+            src: url('https://raw.githubusercontent.com/noppa/text-security/master/dist/text-security-disc.woff');        
+
+        }
+
+        #pin{
+
+            font-family: text-security-disc;
+            -webkit-text-security: disc;
+        }
+
+    </style>
+
 </head>
 <body>
     <div id="app">

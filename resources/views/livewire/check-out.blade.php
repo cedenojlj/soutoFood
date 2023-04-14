@@ -35,7 +35,22 @@
 
             <div class="Container">
 
-                        @if(!$general)           
+
+                        @if ($mostrarOrdenCreada)
+
+                            <div class="row mt-3">
+                                
+                                <h5>Order: <a href="{{url('export-order',[$lastId])}}" class="btn btn-primary">{{ $Customer->name . " - ". Auth::user()->name . " .xlsx" }}</a> </h5>
+                                <h5>Date Order: {{$orderDate->format('m-d-Y')}}</h5>
+                            
+                                <h5>Total Order: {{'$ ' . number_format($total,2)}}</h5>
+                                <h5>Rebate: {{'$ ' . number_format($rebate,2)}}</h5>
+
+                            </div>
+
+                        @endif 
+
+                        @if($general)           
                         
                                 {{-- search  --}} 
 
@@ -186,8 +201,8 @@
 
                                             </div>
                                         </div>
-                                                            
-                                        
+                                                    
+                                                                                
                                         {{-- pin customer  --}}
 
                                         @if ($mostrarPin)                                                                                 
@@ -200,7 +215,9 @@
                                     
                                                     {{-- <input wire:model="pin" id="pin" type="password" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="off"> --}}
 
-                                                    <input wire:model="pin" id="pin" type="{{$tipoInput}}" class="form-control @error('pin') is-invalid @enderror" name="pin" required autocomplete="new-password">
+                                                    {{-- <input wire:model="pin" id="pin" type="{{$tipoInput}}" class="form-control @error('pin') is-invalid @enderror" name="{{$otroNombre}}" required autocomplete="new-password" value="{{old('pin')}}"> --}}
+
+                                                    <input wire:model="pin" id="pin" type="text" class="form-control @error('pin') is-invalid @enderror" name="pin" required>
                                     
                                                     @error('pin')
                                                         <span class="invalid-feedback" role="alert">
@@ -211,6 +228,10 @@
                                             </div>
                                             
                                         @endif
+
+                                        <div class="row">
+                                            {{$control}}
+                                        </div>
 
                                         {{-- Colocando la tabla --}}
 
@@ -361,11 +382,13 @@
 
                                 </div>                             
                              
-                        @endif       
+                        @endif 
+                        
+                          
                 
             </div>            
 
-            <div class="container">  
+            {{-- <div class="container">  
 
                     @if ($mostrarOrdenCreada)
 
@@ -382,7 +405,7 @@
                     @endif       
                     
             </div>
-
+ --}}
             @if ($statusEmail)
 
                 <div class="alert alert-danger" role="alert">

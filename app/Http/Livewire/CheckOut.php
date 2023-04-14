@@ -53,7 +53,7 @@ class CheckOut extends Component
 
     public $status = '';
 
-    public $general = '';
+    public $general = true;
 
     public $lastId;
 
@@ -66,8 +66,16 @@ class CheckOut extends Component
     public $statusEmail = '';
 
     public $tipoInput = 'text';
+    
+    public $mostrarPin = true;   
+    
+    public $verificar;
 
-    public $mostrarPin = true;
+    public $acumulador='';
+
+    public $control;
+
+    public $otroNombre='pin';
 
 
     protected $rules = [
@@ -126,32 +134,72 @@ class CheckOut extends Component
 
     }
 
-
-    public function updatingPin()
+    public function updatingPin($value)
     {
-        /* $replacenode = "/^[0-9]+$/";
-        $passsignupreplaced = preg_replace ($replacenode,"*", $this->pin);
+        /* $ensayo='';
 
-        $this->pin = $passsignupreplaced ; */
+        for ($i=0; $i < strlen($value) ; $i++) { 
+            
+            if ($value[$i]!="*") {
 
-        //dd($passsignupreplaced);
+                $ensayo = $ensayo . $value[$i];
+            }
+        }        
+        
+        $this->control = $ensayo; */
 
-        $this->tipoInput = 'password';
-
-        $this->errores = '';
-
+        $this->tipoInput='password';
 
     }
+    
+    public function updatedPin($clave)
+    {
+       
+        /* if (strlen($clave)>0) {
+           
+            
+            $this->errores = '';  
+            
+            $miClave = strlen($clave)-1;
+
+            $pass = $clave;
+
+            $this->acumulador= $this->acumulador . '*';
+
+            if ( strlen($clave) == 1) {
+
+                $this->verificar = $this->verificar . $clave;
+
+            } else {
+            
+                $this->verificar = $this->verificar . $pass[$miClave];
+            }
+            
+                        
+           $this->pin = $this->acumulador;
+
+
+
+
+        } */
+          
+             
+    }
+   
 
     public function procesarPedido()
     {
 
-        $this->errores = '';
-        //session()->forget('carrito');
+       //dd($this->pin);
 
-        // dd('listo');
+       //$this->tipoInput='text';
+       
+        $this->errores = '';        
 
-        $this->tipoInput = 'text';        
+        $miPin = $this->pin;    
+        
+        /* $this->pin='**********';
+        $this->otroNombre='********'; */
 
         $this->emit('ocultar');
 
@@ -159,13 +207,19 @@ class CheckOut extends Component
 
         $totalorden = 0;
 
-        
+       
 
-        if ($this->pin != $this->Customer->pin) {
+        if ($miPin != $this->Customer->pin) {
 
             $this->tipoInput = 'password';
 
             $this->errores = 'The pin field is invalid.';
+
+            $this->reset('pin');
+
+            $this->verificar='';
+
+            $this->acumulador='';
 
 
         } else {
@@ -222,7 +276,7 @@ class CheckOut extends Component
 
             $this->orderDate = $order->created_at;
          
-
+            
             if (session()->has('carrito')) {
 
                 foreach (session('carrito') as $key => $item) {
@@ -269,10 +323,13 @@ class CheckOut extends Component
 
             session()->forget('carrito');
 
+            $this->enviandoEmail($order->id);
 
+           // return redirect()->to('/home');
 
-            $this->general = 1; // para ocultar los demas campos y dejar solo el reporte
-            // de orden creada   
+           $this->general = false;
+           // para ocultar los demas campos y dejar solo el reporte
+           // de orden creada   
 
             $this->status = 'Order Created Successfully';
 
@@ -280,11 +337,12 @@ class CheckOut extends Component
 
             $this->reset('pin');
 
-            $this->reset('searchx');
+           $this->reset('searchx');  
             
  
-        }
+        }       
 
+        
         if ($this->mostrarOrdenCreada) {
 
             //dd('entrado a la funcion de envio');
@@ -292,6 +350,7 @@ class CheckOut extends Component
             $this->enviandoEmail($order->id);
         }
 
+        
 
     }
 

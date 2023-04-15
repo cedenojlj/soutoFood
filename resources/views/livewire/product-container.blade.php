@@ -283,7 +283,7 @@
                     
                     <div class="row justify-content-center mt-4">
 
-                        <div class="col-md-11">                      
+                        <div class="col-md-12">                      
                            
                             <div class="table-responsive" wire:loading.remove wire:target="save">
 
@@ -291,14 +291,14 @@
         
                                         <thead align="center" class="align-top">
                                             <tr>
-                                                <th>Order Qty</th>
+                                                <th>Order Quantity</th>
                                                 {{-- <th scope="col">Item text</th> --}}
                                                 <th colspan="3">Description</th>                                                    
                                                
                                                 <th>Scan Item UPC</th>
                                                 <th>Cases per Pallet</th>
                                                 <th>Food Show Deal</th>
-                                                <th>Notes $</th>
+                                                <th>OrderNotes $</th>
                                                 <th>Final Price $</th>
                                                 {{-- <th>{{Auth::user()->date1}}</th>
                                                 <th>{{Auth::user()->date2}}</th>

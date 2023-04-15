@@ -84,7 +84,7 @@ class ProductContainer extends Component
     protected $rules = [
 
 
-        'amount.*' => 'required|numeric|integer|min:1|max:999',
+        'amount.*' => 'required|numeric|integer|min:1|max:99999',
         'notes.*' => 'required|numeric|min:0',
         'prices.*' => 'required|numeric|min:0',
         'qtyone.*' => 'required|numeric|min:0',
@@ -146,9 +146,9 @@ class ProductContainer extends Component
 
             $this->amount[$key] = '';
 
-        } elseif ($value > 999) {
+        } elseif ($value > 99999) {
             
-            $this->amount[$key] = 999;
+            $this->amount[$key] = 99999;
 
         } else {
 
@@ -179,9 +179,9 @@ class ProductContainer extends Component
 
             $this->qtyone[$key] = '';
 
-        } elseif ($value > 999) {
+        } elseif ($value > 99999) {
 
-            $this->qtyone[$key] = 999;
+            $this->qtyone[$key] = 99999;
 
         }else {
 
@@ -211,9 +211,9 @@ class ProductContainer extends Component
 
             $this->qtytwo[$key] = '';
 
-        } elseif ($value > 999) {
+        } elseif ($value > 99999) {
 
-            $this->qtytwo[$key] = 999;
+            $this->qtytwo[$key] = 99999;
 
         }else {
 
@@ -244,9 +244,9 @@ class ProductContainer extends Component
 
             $this->qtythree[$key] = '';
 
-        } elseif ($value > 999) {
+        } elseif ($value > 99999) {
 
-            $this->qtythree[$key] = 999;
+            $this->qtythree[$key] = 99999;
 
         }else {
 

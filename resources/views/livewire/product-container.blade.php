@@ -254,7 +254,7 @@
 
                     <div class="row mt-4 mb-2 justify-content-center" wire:loading.remove wire:target="save">
 
-                            <div class="col-md-11">                            
+                            <div class="col-sm-12 col-md-11">                            
 
                                 <div class="row">
 

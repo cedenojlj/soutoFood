@@ -49,15 +49,15 @@
         <div class="mt-4">
                
                 
-                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <nav class="navbar navbar-expand-xxl navbar-light bg-white">
                                     
                     <div class="container-fluid">  
                             
-                                <div class="navbar-brand col-sm-2 col-lg-4 ps-md-5">
+                                <div class="navbar-brand col-sm-2 col-lg-1 col-xl-4 ps-md-5">
                                     <img src="{{asset('img/logo1.jpg')}}" alt="" width="100" height="80">
                                 </div>
  
-                                <div class="col-sm-4 col-lg-3">
+                                <div class="col-sm-4 col-md-4 col-lg-4">
                                     <h2>Souto Foods Festival</h2>
                                 </div>
 

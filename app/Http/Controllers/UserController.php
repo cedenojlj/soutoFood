@@ -62,7 +62,7 @@ class UserController extends Controller
         $user->name = $request->name;       
         $user->email = $request->email;
         $user->emailuser = $request->emailuser;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
         $user->date1 = $request->date1;
         $user->date2 = $request->date2;
         $user->date3 = $request->date3; 
@@ -114,7 +114,7 @@ class UserController extends Controller
         $user->name = $request->name;        
         $user->email = $request->email;
         $user->emailuser = $request->emailuser;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
         $user->date1 = $request->date1;
         $user->date2 = $request->date2;
         $user->date3 = $request->date3; 

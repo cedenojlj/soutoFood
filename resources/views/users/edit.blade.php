@@ -85,7 +85,7 @@
 
                             @else
 
-                            <input type="hidden" name="password" value="12345678">
+                            <input type="hidden" name="password" value="{{ $user->password }}">
 
                             @endif
 
@@ -103,7 +103,7 @@
 
                             @else
 
-                                <input type="hidden" name="password_confirmation" value="12345678">
+                                <input type="hidden" name="password_confirmation" value="{{ $user->password }}">
 
                             @endif
 

@@ -2,11 +2,13 @@
 
    
     <div class="row">
+
         <div class="col-md-11 offset-md-1">
 
             <h5>{{Auth::user()->name}}</h5>              
 
         </div>
+
     </div>
         
     <div class="row justify-content-center">
@@ -39,24 +41,8 @@
 
     </div>
 
-                            
-               
-
-             {{--  @if ($mostrarCheckout)
-
-                <div class="row mt-2">
-
-                    <div class="col">
-
-                        <a class="btn btn-primary" href="{{route('checkout')}}">Checkout</a>
-
-                    </div>
-
-                </div>
-                  
-              @endif --}}
-
-            <div class="text-center mb-4">
+             
+    <div class="text-center mb-4">
                 <div wire:loading.inline-flex>
 
                     <button class="btn btn-primary" type="button" disabled>
@@ -65,7 +51,7 @@
                     </button>
                     
                 </div>
-            </div>      
+    </div>      
 
 
             @if ($showCheckout)
@@ -130,23 +116,23 @@
 
                                     <div class="row mb-3 justify-content-center">
 
-                                        <label for="search" class="col col-md-2 col-form-label text-md-end">Search:</label>
+                                        <label for="search" class="col-sm-6 col-md-2 col-form-label text-md-end">Search:</label>
 
-                                        <div class="col col-md-6">
+                                        <div class="col-sm-6 col-md-6">
                                             
                                             <input wire:model="search" class="form-control" type="text" placeholder="Search Product code or name..."/>            
                                         
                                         </div>
                                     </div>
 
-                                    
+                                     
                                     {{--  Boton select   --}}
 
                                     <div class="row mb-3 justify-content-center">
 
-                                        <label for="idProduct" class="col-md-2 col-form-label text-md-end">Product:</label>
+                                        <label for="idProduct" class="col-sm-6 col-md-2 col-form-label text-md-end">Product:</label>
 
-                                        <div class="col-md-6">               
+                                        <div class="col-sm-6 col-md-6">               
                                         
                                                 <select wire:model="idProduct" class="form-select @error('idProduct') is-invalid @enderror" aria-label="Default select example">
                             
@@ -173,21 +159,18 @@
 
                                     {{--  Boton agregar   --}}
 
-                                    <div class="row justify-content-md-center ">
+                                    <div class="row justify-content-center ">
 
 
-                                        <div class="col-md-1">
+                                        <div class="col-sm-auto col-md-auto">
                         
-                                        <button type="button" wire:click="saveItem" name="" id="" class="btn btn-primary">Add</button>
+                                            <button type="button" wire:click="saveItem" name="" id="" class="btn btn-primary">Add</button>
+
+                                            <button type="button" wire:click="closeItem" name="" id="" class="btn btn-primary">Close</button>
                                         
                         
                                         </div>
-
-                                        <div class="col-md-1">
-                        
-                                            <button type="button" wire:click="closeItem" name="" id="" class="btn btn-primary">Close</button>
-                            
-                                        </div>
+                                       
 
                                     </div>   
 
@@ -218,9 +201,9 @@
 
                                     <div class="row mb-3 justify-content-center">
 
-                                        <label for="idProductBundle" class="col-md-2 col-form-label text-md-end">Product:</label>
+                                        <label for="idProductBundle" class="col-sm-6 col-md-2 col-form-label text-md-end">Product:</label>
 
-                                        <div class="col-md-6">               
+                                        <div class="col-sm-6 col-md-4">               
                                         
                                                 <select wire:model="idProductBundle" class="form-select @error('idProductBundle') is-invalid @enderror" aria-label="Default select example">
                             
@@ -240,31 +223,21 @@
                                                     </span>
                                                 @enderror
                             
-                                        </div>
+                                        </div>                                        
                             
                                     </div>
 
+                                    <div class="row mb-3 justify-content-center">
 
-                                    {{--  Boton agregar   --}}
+                                        <div class="col-sm-auto col-md-auto">
 
-                                    <div class="row justify-content-md-center ">
+                                            <button type="button" wire:click="saveItemBundle" name="" id="" class="btn btn-primary">Add</button>
 
-
-                                        <div class="col-md-1">
-                        
-                                        <button type="button" wire:click="saveItemBundle" name="" id="" class="btn btn-primary">Add</button>
-                                        
-                        
-                                        </div>
-
-                                        <div class="col-md-1">
-                        
                                             <button type="button" wire:click="closeItemBundle" name="" id="" class="btn btn-primary">Close</button>
-                            
+
                                         </div>
 
-                                    </div>   
-
+                                    </div>  
                                     
                                 </div>
                             </div>
@@ -307,165 +280,168 @@
 
 
                     </div>  
-
+                    
                     <div class="row justify-content-center mt-4">
 
-                        <div class="col-md-11">
-                        
+                        <div class="col-md-11">                      
+                           
                             <div class="table-responsive" wire:loading.remove wire:target="save">
 
-                                    <table class="table table-sm table-bordered">
-
-                                            <thead align="center" class="align-top">
-                                                <tr>
-                                                    <th scope="col">Order Qty</th>
-                                                    {{-- <th scope="col">Item text</th> --}}
-                                                    <th scope="col" colspan="3">Description</th>                                                    
-                                                   
-                                                    <th scope="col">Scan Item UPC</th>
-                                                    <th scope="col">Cases per Pallet</th>
-                                                    <th scope="col">Food Show Deal</th>
-                                                    <th scope="col">Notes $</th>
-                                                    <th scope="col">Final Price $</th>
-                                                    {{-- <th scope="col">{{Auth::user()->date1}}</th>
-                                                    <th scope="col">{{Auth::user()->date2}}</th>
-                                                    <th scope="col">{{Auth::user()->date3}}</th>  --}} 
-                                                    <th scope="col">{{$fecha1}}</th>
-                                                    <th scope="col">{{$fecha2}}</th>
-                                                    <th scope="col">{{$fecha3}}</th> 
-
-                                                </tr>
-                                            </thead>
+                                <table class="table table-sm table-bordered">
+        
+                                        <thead align="center" class="align-top">
+                                            <tr>
+                                                <th>Order Qty</th>
+                                                {{-- <th scope="col">Item text</th> --}}
+                                                <th colspan="3">Description</th>                                                    
+                                               
+                                                <th>Scan Item UPC</th>
+                                                <th>Cases per Pallet</th>
+                                                <th>Food Show Deal</th>
+                                                <th>Notes $</th>
+                                                <th>Final Price $</th>
+                                                {{-- <th>{{Auth::user()->date1}}</th>
+                                                <th>{{Auth::user()->date2}}</th>
+                                                <th>{{Auth::user()->date3}}</th>  --}} 
+                                                <th>{{$fecha1}}</th>
+                                                <th>{{$fecha2}}</th>
+                                                <th>{{$fecha3}}</th> 
+        
+                                            </tr>
+                                        </thead>
+                                        
+                                        
+                                        <tbody>
+                        
+                                        
+        
+                                            @if (!empty($items))                                       
                                             
-                                            
-                                            <tbody>
-                            
-                                            
-
-                                                @if (!empty($items))                                       
+        
+                                                @foreach ($items as $key => $value)
+                                
                                                 
-
-                                                    @foreach ($items as $key => $value)
-                                    
-                                                    
-                                                        {{--  <tr class="{{$control == $key ? $status:''}}">   --}}
-
-                                                        <tr class="{{empty($indicador[$key]) ? '': $indicador[$key]}}"> 
+                                                    {{--  <tr class="{{$control == $key ? $status:''}}">   --}}
+        
+                                                    <tr class="{{empty($indicador[$key]) ? '': $indicador[$key]}}"> 
+                                                        
+                                                        
+                                
+                                                            {{-- @livewire('product-item', ['product' => $value], key($key)) --}}
+                                
+                                                        {{--  <td> <button wire:click="agregar" type="button" class="btn btn-primary btn-sm">+</button> 
+                                                            <button wire:click="eliminar" type="button" class="btn btn-danger btn-sm">-</button> </th>     --}}
+                                                
+                                                            <td>
+                                                                <input wire:model.debounce.1000ms="amount.{{$key}}" 
+                                                                id="amount" type="number"  
+                                                                class="form-control bg-info @error('amount.'.$key) is-invalid @enderror" 
+                                                                name="amount" required autofocus max="999">
+                                                                
+                                                                <span class="error">
+                                                                    @error('amount.'.$key) {{ $message }} @enderror
+                                                                </span>
+                                
+                                                                {{-- <span>
+                                                                    {{ $control == $key ? $mensajex: ''}}
+                                                                </span> --}}
+                                                                
+                                                            </td>
+                                                            {{-- <td>{{$value[itemnumber}}</td> --}}
+                                                            <td colspan="3">{{$value['description']}}</td>
+                                                            <td>{{$value['upc']}}</td>
+                                                            <td>{{$value['pallet']}}</td>
+                                                        <td>{{"$".number_format($value['price'],2) }}</td>
+        
+                                                            {{-- <td><input wire:model="prices.{{$key}}" 
+                                                                id="prices" type="number" 
+                                                                class="form-control @error('prices.'.$key) is-invalid @enderror" name="prices" >
                                                             
+                                                                <span class="error">
+                                                                    @error('prices.'.$key) {{ $message }} @enderror
+                                                                </span>
                                                             
-                                    
-                                                                {{-- @livewire('product-item', ['product' => $value], key($key)) --}}
-                                    
-                                                            {{--  <td> <button wire:click="agregar" type="button" class="btn btn-primary btn-sm">+</button> 
-                                                                <button wire:click="eliminar" type="button" class="btn btn-danger btn-sm">-</button> </th>     --}}
+                                                            </td> --}}
+                                
+                                
+                                                            <td><input wire:model.debounce.1000ms="notes.{{$key}}" 
+                                                                id="notes" type="number" 
+                                                                class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$" step="0.01">
+                                                            
+                                                                <span class="error">
+                                                                    @error('notes.'.$key) {{ $message }} @enderror
+                                                                </span>
+                                                            
+                                                            </td>
+                                
+                                
+                                                            {{-- <td>{{!empty($notes[$key])? $value['price'] - $notes[$key] :$value['price']}}</td> --}}
+        
+                                                            {{-- <td>{{!empty($notes[$key])? "$".((float) $prices[$key] - (float) $notes[$key]) :"$".((float) $prices[$key])}}</td> --}}
+        
+                                                            {{-- <td>{{!empty($notes[$key])? "$".round( (floatval($value['price']) - floatval($notes[$key])), 2) :"$".round( floatval($value['price']) )  }}</td> --}}
+                                                            
+                                                            <td>{{!empty($notes[$key])? "$".number_format( (floatval($value['price']) - floatval($notes[$key])), 2) :"$".number_format( $value['price'],2) }}</td>
                                                     
-                                                                <td>
-                                                                    <input wire:model.debounce.1000ms="amount.{{$key}}" 
-                                                                    id="amount" type="number"  
-                                                                    class="form-control bg-info @error('amount.'.$key) is-invalid @enderror" 
-                                                                    name="amount" required autofocus max="999">
-                                                                    
-                                                                    <span class="error">
-                                                                        @error('amount.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                    
-                                                                    {{-- <span>
-                                                                        {{ $control == $key ? $mensajex: ''}}
-                                                                    </span> --}}
-                                                                    
-                                                                </td>
-                                                                {{-- <td>{{$value[itemnumber}}</td> --}}
-                                                                <td colspan="3">{{$value['description']}}</td>
-                                                                <td>{{$value['upc']}}</td>
-                                                                <td>{{$value['pallet']}}</td>
-                                                            <td>{{"$".number_format($value['price'],2) }}</td>
-
-                                                                {{-- <td><input wire:model="prices.{{$key}}" 
-                                                                    id="prices" type="number" 
-                                                                    class="form-control @error('prices.'.$key) is-invalid @enderror" name="prices" >
+                                                            <td><input wire:model.debounce.1000ms="qtyone.{{$key}}" 
+                                                                id="qtyone" type="number" 
+                                                                class="form-control bg-info @error('qtyone.'.$key) is-invalid @enderror" name="qtyone" required>
+                                                            
                                                                 
-                                                                    <span class="error">
-                                                                        @error('prices.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                                                
-                                                                </td> --}}
-                                    
-                                    
-                                                                <td><input wire:model.debounce.1000ms="notes.{{$key}}" 
-                                                                    id="notes" type="number" 
-                                                                    class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$" step="0.01">
-                                                                
-                                                                    <span class="error">
-                                                                        @error('notes.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                                                
-                                                                </td>
-                                    
-                                    
-                                                                {{-- <td>{{!empty($notes[$key])? $value['price'] - $notes[$key] :$value['price']}}</td> --}}
-
-                                                                {{-- <td>{{!empty($notes[$key])? "$".((float) $prices[$key] - (float) $notes[$key]) :"$".((float) $prices[$key])}}</td> --}}
-
-                                                                {{-- <td>{{!empty($notes[$key])? "$".round( (floatval($value['price']) - floatval($notes[$key])), 2) :"$".round( floatval($value['price']) )  }}</td> --}}
-                                                                
-                                                                <td>{{!empty($notes[$key])? "$".number_format( (floatval($value['price']) - floatval($notes[$key])), 2) :"$".number_format( $value['price'],2) }}</td>
-                                                        
-                                                                <td><input wire:model.debounce.1000ms="qtyone.{{$key}}" 
-                                                                    id="qtyone" type="number" 
-                                                                    class="form-control bg-info @error('qtyone.'.$key) is-invalid @enderror" name="qtyone" required>
-                                                                
-                                                                    
-                                                                    <span class="error">
-                                                                        @error('qtyone.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                    
-                                                                </td>
-                                                        
-                                                                <td><input wire:model.debounce.1000ms="qtytwo.{{$key}}"  
-                                                                    id="qtytwo" type="number" 
-                                                                    class="form-control bg-info @error('qtytwo.'.$key) is-invalid @enderror" name="qtytwo">
-                                                                
-                                                                    <span class="error">
-                                                                        @error('qtytwo.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                    
-                                                                </td>
-                                                        
-                                                                <td><input wire:model.debounce.1000ms="qtythree.{{$key}}" 
-                                                                    id="qtythree" type="number"  
-                                                                    class="form-control bg-info @error('qtythree.'.$key) is-invalid @enderror" name="qtythree">
-                                                                
-                                                                    <span class="error">
-                                                                        @error('qtythree.'.$key) {{ $message }} @enderror
-                                                                    </span>
-                                    
-                                                                </td>     
-                                                        
-                                                        
-                                                        </tr>                            
-                                                        
-                                    
-                                                    @endforeach  
-                                                
-                                                @else                                       
-
-                                                    <h3> No items </h3>
-
+                                                                <span class="error">
+                                                                    @error('qtyone.'.$key) {{ $message }} @enderror
+                                                                </span>
+                                
+                                                            </td>
                                                     
-                                                @endif
+                                                            <td><input wire:model.debounce.1000ms="qtytwo.{{$key}}"  
+                                                                id="qtytwo" type="number" 
+                                                                class="form-control bg-info @error('qtytwo.'.$key) is-invalid @enderror" name="qtytwo">
+                                                            
+                                                                <span class="error">
+                                                                    @error('qtytwo.'.$key) {{ $message }} @enderror
+                                                                </span>
+                                
+                                                            </td>
+                                                    
+                                                            <td><input wire:model.debounce.1000ms="qtythree.{{$key}}" 
+                                                                id="qtythree" type="number"  
+                                                                class="form-control bg-info @error('qtythree.'.$key) is-invalid @enderror" name="qtythree">
+                                                            
+                                                                <span class="error">
+                                                                    @error('qtythree.'.$key) {{ $message }} @enderror
+                                                                </span>
+                                
+                                                            </td>     
+                                                    
+                                                    
+                                                    </tr>                            
+                                                    
+                                
+                                                @endforeach  
                                             
-                                                                        
+                                            @else                                       
+        
+                                                <h3> No items </h3>
+        
                                                 
-                                            </tbody>
-
-                                    </table>
-
-                            </div>
+                                            @endif
+                                        
+                                                                    
+                                            
+                                        </tbody>
+        
+                                </table>
+        
+                            </div>                            
 
                         </div>
 
 
                     </div>
+
+
+                    
                     
                         
                 @endif

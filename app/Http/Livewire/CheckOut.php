@@ -376,7 +376,7 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
-            //$destinatarios[] = 'sales@soutofoodsfestival.com';
+            $destinatarios[] = 'sales@soutofoodsfestival.com';
        
        
         // dd($destinatarios);
@@ -439,7 +439,7 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
-         //$destinatarios[]='rebates@soutofoodsfestival.com';
+         $destinatarios[]='rebates@soutofoodsfestival.com';
 
 
         $reporte = Excel::raw(new RebateExport($id), \Maatwebsite\Excel\Excel::XLSX);

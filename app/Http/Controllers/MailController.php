@@ -67,9 +67,7 @@ class MailController extends Controller
         }
 
        
-        //$destinatarios[]=['sales@soutofoodsfestival.com'];
-
-        //$ventas = 'illenybm36@gmail.com';
+        //$destinatarios[]=['sales@soutofoodsfestival.com'];        
 
        // $destinatarios[]=[$ventas];
 
@@ -77,8 +75,7 @@ class MailController extends Controller
 
 
         $reporte = Excel::raw(new OrderExport($id), \Maatwebsite\Excel\Excel::XLSX);
-
-        Mail::to('illenybm36@gmail.com')->send(new DemoEmail($emailData, $reporte));
+       
 
         foreach ($destinatarios as $value) {
             
@@ -139,9 +136,7 @@ class MailController extends Controller
             $destinatarios[]=[$orden->saleRepEmail];
         }
 
-        //$destinatarios[]=['rebates@soutofoodsfestival.com'];
-
-        
+        //$destinatarios[]=['rebates@soutofoodsfestival.com'];        
 
 
         $reporte = Excel::raw(new RebateExport($id), \Maatwebsite\Excel\Excel::XLSX);

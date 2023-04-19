@@ -235,92 +235,91 @@
 
                                         {{-- Colocando la tabla --}}
 
-                                        <table class="table table-bordered">
-                                            <thead align="center">
-                                              <tr>
-                                                    <th scope="col">Order Qty</th>                                                    
-                                                    <th scope="col" colspan="3">Description</th>
-                                                    <th scope="col">Scan Item UPC</th>
-                                                    <th scope="col">Cases per Pallet</th>
-                                                    <th scope="col">Food Show Deal</th>
-                                                    <th scope="col">Notes $</th>
-                                                    <th scope="col">Final Price $</th>                                                    
-                                                    <th scope="col">{{Auth::user()->date1}}</th>
-                                                    <th scope="col">{{Auth::user()->date2}}</th>
-                                                    <th scope="col">{{Auth::user()->date3}}</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                    
-                                                @php
-                                                    $total =0;
-                                                    $totalqty=0;
-                                                    $totalpallet=0;
-                                                    $totalqtyone=0;
-                                                    $totalqtytwo=0;
-                                                    $totalqtythree=0;
-                                    
-                                                @endphp
-                                    
-                                    
-                                                @if (session('carrito'))
-                                                                        
-                                                    @foreach (session('carrito') as $item)
-                                    
-                                                        <tr>
-                                                            <td>{{ $item['amount'] }}</td>
-                                                            <td colspan="3">{{ $item['name'] }}</td>
-                                                            <td>{{ $item['upc'] }}</td>
-                                                            <td>{{ $item['pallet'] }}</td>
-                                                            <td>{{ '$ '. $item['price'] }}</td>
-                                                            <td>{{ '$ '. $item['notes'] }}</td>
-                                                            <td>{{ '$ '. $item['finalprice'] }}</td>
-                                                            <td>{{ $item['qtyone'] }}</td>
-                                                            <td>{{ $item['qtytwo'] }}</td>
-                                                            <td>{{ $item['qtythree'] }}</td>
-                                                            
-                                                        </tr> 
-                                    
-                                                        @php
-                                                            $totalqty=$totalqty + $item['amount'];
-                                                            $totalpallet=$totalpallet + $item['pallet'];
-                                                            $totalqtyone=$totalqtyone + $item['qtyone'];
-                                                            $totalqtytwo=$totalqtytwo + $item['qtytwo'];
-                                                            $totalqtythree=$totalqtythree + $item['qtythree'];
-                                                            $total = $total + $item['amount'] * $item['finalprice'];
-                                                        @endphp
-                                                    @endforeach 
+                                        <div class="table-responsive">                                        
 
-                                                        <tr>
-                                                            <td>{{ $totalqty }}</td>
-                                                            <td colspan="3"></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td>{{ $totalqtyone }}</td>
-                                                            <td>{{ $totalqtytwo}}</td>
-                                                            <td>{{ $totalqtythree }}</td>
-                                                            
-                                                        </tr> 
+                                            <table class="table table-bordered">
+                                                <thead align="center" class="align-top">
+                                                <tr>
+                                                        <th scope="col" style="padding: 0px 25px">Qty</th>                                                    
+                                                        <th scope="col" colspan="3">Description</th>
+                                                        <th scope="col">Scan Item UPC</th>
+                                                        <th scope="col">Cases per Pallet</th>
+                                                        <th scope="col" style="padding: 0px 25px">Food Show Deal</th>
+                                                        <th scope="col" style="padding: 0px 25px">Notes $</th>
+                                                        <th scope="col" style="padding: 0px 25px">Final Price $</th>                                                    
+                                                        <th scope="col">{{Auth::user()->date1}}</th>
+                                                        <th scope="col">{{Auth::user()->date2}}</th>
+                                                        <th scope="col">{{Auth::user()->date3}}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody align="center">
+                                        
+                                                    @php
+                                                        $total =0;
+                                                        $totalqty=0;
+                                                        $totalpallet=0;
+                                                        $totalqtyone=0;
+                                                        $totalqtytwo=0;
+                                                        $totalqtythree=0;
+                                        
+                                                    @endphp
+                                        
+                                        
+                                                    @if (session('carrito'))
+                                                                            
+                                                        @foreach (session('carrito') as $item)
+                                        
+                                                            <tr>
+                                                                <td>{{ $item['amount'] }}</td>
+                                                                <td colspan="3">{{ $item['name'] }}</td>
+                                                                <td>{{ $item['upc'] }}</td>
+                                                                <td>{{ $item['pallet'] }}</td>
+                                                                <td>{{ '$ '. $item['price'] }}</td>
+                                                                <td>{{ '$ '. $item['notes'] }}</td>
+                                                                <td>{{ '$ '. $item['finalprice'] }}</td>
+                                                                <td>{{ $item['qtyone'] }}</td>
+                                                                <td>{{ $item['qtytwo'] }}</td>
+                                                                <td>{{ $item['qtythree'] }}</td>
+                                                                
+                                                            </tr> 
+                                        
+                                                            @php
+                                                                $totalqty=$totalqty + $item['amount'];
+                                                                $totalpallet=$totalpallet + $item['pallet'];
+                                                                $totalqtyone=$totalqtyone + $item['qtyone'];
+                                                                $totalqtytwo=$totalqtytwo + $item['qtytwo'];
+                                                                $totalqtythree=$totalqtythree + $item['qtythree'];
+                                                                $total = $total + $item['amount'] * $item['finalprice'];
+                                                            @endphp
+                                                        @endforeach 
 
-                                                        <tr>
-                                                            <td><strong>Total Order:</strong></td>
-                                                            <td colspan="9"><strong>{{ '$ '. number_format($total,2) }}</strong></td>
-                                                            
-                                                            
-                                                        </tr> 
-                                    
-                                                @else
-                                    
-                                                    <h6>No Product in the Cart</h6>  
-                                                                  
-                                                @endif  
+                                                            <tr>
+                                                                <td>{{ $totalqty }}</td>
+                                                                <td colspan="8"></td>                                                                
+                                                                <td>{{ $totalqtyone }}</td>
+                                                                <td>{{ $totalqtytwo}}</td>
+                                                                <td>{{ $totalqtythree }}</td>
+                                                                
+                                                            </tr> 
+
+                                                            <tr>
+                                                                <td><strong>Total Order:</strong></td>
+                                                                <td colspan="9"><strong>{{ '$ '. number_format($total,2) }}</strong></td>
+                                                                
+                                                                
+                                                            </tr> 
+                                        
+                                                    @else
+                                        
+                                                        <h6>No Product in the Cart</h6>  
+                                                                    
+                                                    @endif  
+                                                    
+                                                </tbody>   
                                                 
-                                            </tbody>   
-                                            
-                                        </table>
+                                            </table>
+
+                                        </div>
 
                                         {{-- rebate  --}}
 
@@ -335,7 +334,7 @@
                                                 <div class="input-group mb-3">
 
                                                     <span class="input-group-text">$</span>
-                                                    <input wire:model.debounce.1000ms="rebate" id="rebate" type="number" step=".01" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                    <input wire:model="rebate" id="rebate" type="number" step=".01" class="form-control" aria-label="Amount (to the nearest dollar)">
                                                     {{-- <span class="input-group-text">.00</span> --}}
                                                 
                                                 </div>
@@ -362,11 +361,25 @@
                                                 <textarea wire:model="comments" class="form-control" name="comments" id="comments" rows="3"></textarea>  
 
                                             </div>
+
+                                            <div class="col-md-10 mt-4">
+                                                
+                                                <button wire:click="procesarPedido" type="button" class="btn btn-primary">Checkout</button>                                                
+
+                                            </div>
+
+                                            <div class="col-md-2 mt-4">
+                                                
+                                                <button type="button" wire:click="$emit('regresar')" name="" id="" class="btn btn-primary">Back</button> 
+
+                                            </div>
+
+
                                         </div>
 
                                         {{-- procesarPedido  --}}
 
-                                        <div class="row mb-3">
+                                        {{-- <div class="row mb-3">
 
                                             <div class="col-md-11">
                                                 
@@ -380,7 +393,7 @@
 
                                             </div>
 
-                                        </div>
+                                        </div> --}}
                                     
                                     @endif
 

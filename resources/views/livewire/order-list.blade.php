@@ -35,7 +35,7 @@
                                 <th scope="col">Customer</th>
                                 <th scope="col">Total $</th>
                                 <th scope="col">Rebate $</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col"></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                 <td>{{ '$ '.number_format($order->rebate,2) }}</td>
 
                                 <td>
-                                    <a href="{{url('export-order',[$order->id])}}" class="btn btn-primary">Download</a>
+                                    <a href="{{url('export-order',[$order->id])}}" class="btn btn-primary"><i class="bi bi-cloud-arrow-down-fill"></i></a>
                                 </td>
                               </tr> 
                               @php

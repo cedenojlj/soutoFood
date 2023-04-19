@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-sm-12 col-md-12">
 
                 @includeif('partials.errors')
 

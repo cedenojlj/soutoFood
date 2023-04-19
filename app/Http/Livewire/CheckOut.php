@@ -66,16 +66,16 @@ class CheckOut extends Component
     public $statusEmail = '';
 
     public $tipoInput = 'text';
-    
-    public $mostrarPin = true;   
-    
+
+    public $mostrarPin = true;
+
     public $verificar;
 
-    public $acumulador='';
+    public $acumulador = '';
 
     public $control;
 
-    public $otroNombre='pin';
+    public $otroNombre = 'pin';
 
 
     protected $rules = [
@@ -98,7 +98,7 @@ class CheckOut extends Component
         $this->emit('ocultarBack');
     }
 
-    
+
     public function updatedidCustomer()
     {
         $this->Customer = Customer::find($this->idCustomer);
@@ -110,55 +110,54 @@ class CheckOut extends Component
         $this->emailRep = $this->Customer->emailRep;
 
         $this->vendorEmail = Auth::user()->emailuser;
-
-        
     }
 
 
     public function updatedRebate()
     {
-        
-        //dump('ver');
-        
-        $control = intval($this->rebate);
 
-        $this->rebate= $control;
+        if (is_numeric($this->rebate)) {
+
+            $control = intval($this->rebate);
+
+            $this->rebate = $control;
 
 
-        //dd($control);
+            //dd($control);
 
-        if ($this->rebate <= 0 or $this->rebate > 10000) {
+            if ($this->rebate <= 0 or $this->rebate > 10000) {
+
+                $this->reset('rebate');
+            }
+            
+        } else {
 
             $this->reset('rebate');
         }
-
     }
 
     public function updatingPin($value)
     {
-        
-
     }
-    
+
     public function updatedPin($clave)
     {
-       
-        $this->errores = '';         
-             
+
+        $this->errores = '';
     }
-   
+
 
     public function procesarPedido()
     {
 
-       //dd($this->pin);
+        //dd($this->pin);
 
-       //$this->tipoInput='text';
-       
-        $this->errores = '';        
+        //$this->tipoInput='text';
 
-        $miPin = $this->pin;    
-        
+        $this->errores = '';
+
+        $miPin = $this->pin;
+
         /* $this->pin='**********';
         $this->otroNombre='********'; */
 
@@ -168,15 +167,13 @@ class CheckOut extends Component
 
         $totalorden = 0;
 
-       
 
-        if ($miPin != $this->Customer->pin) {           
+
+        if ($miPin != $this->Customer->pin) {
 
             $this->errores = 'The pin field is invalid.';
 
-            $this->reset('pin');           
-
-
+            $this->reset('pin');
         } else {
 
             $this->errores = '';
@@ -230,8 +227,8 @@ class CheckOut extends Component
             $this->lastId = $order->id;
 
             $this->orderDate = $order->created_at;
-         
-            
+
+
             if (session()->has('carrito')) {
 
                 foreach (session('carrito') as $key => $item) {
@@ -278,13 +275,13 @@ class CheckOut extends Component
 
             session()->forget('carrito');
 
-           //$this->enviandoEmail($order->id);
+            //$this->enviandoEmail($order->id);
 
-           // return redirect()->to('/home');
+            // return redirect()->to('/home');
 
-           $this->general = false;
-           // para ocultar los demas campos y dejar solo el reporte
-           // de orden creada   
+            $this->general = false;
+            // para ocultar los demas campos y dejar solo el reporte
+            // de orden creada   
 
             $this->status = 'Order Created Successfully';
 
@@ -292,21 +289,16 @@ class CheckOut extends Component
 
             $this->reset('pin');
 
-           $this->reset('searchx');  
-            
- 
-        }       
+            $this->reset('searchx');
+        }
 
-        
+
         if ($this->mostrarOrdenCreada) {
 
             //dd('entrado a la funcion de envio');
 
             $this->enviandoEmail($order->id);
         }
-
-        
-
     }
 
     public function enviandoEmail($id)
@@ -376,9 +368,9 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
-            $destinatarios[] = 'sales@soutofoodsfestival.com';
-       
-       
+        $destinatarios[] = 'sales@soutofoodsfestival.com';
+
+
         // dd($destinatarios);
 
 
@@ -439,7 +431,7 @@ class CheckOut extends Component
             $destinatarios[] = $orden->saleRepEmail;
         }
 
-         $destinatarios[]='rebates@soutofoodsfestival.com';
+        $destinatarios[] = 'rebates@soutofoodsfestival.com';
 
 
         $reporte = Excel::raw(new RebateExport($id), \Maatwebsite\Excel\Excel::XLSX);
@@ -470,4 +462,3 @@ class CheckOut extends Component
         return view('livewire.check-out');
     }
 }
-

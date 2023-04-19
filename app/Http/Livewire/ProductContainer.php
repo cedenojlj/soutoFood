@@ -128,10 +128,10 @@ class ProductContainer extends Component
 
         $sumaQty = $this->qtyone[$key] +  $this->qtytwo[$key] + $this->qtythree[$key];
 
-        if ($this->amount[$key] < $sumaQty ) {
+        /* if ($this->amount[$key] < $sumaQty ) {
            
             $this->amount[$key] = $sumaQty;
-        }
+        } */
 
 
 

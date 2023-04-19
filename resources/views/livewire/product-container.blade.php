@@ -288,17 +288,17 @@
                             <div class="table-responsive" wire:loading.remove wire:target="save">
 
                                 <table class="table table-sm table-bordered">
-        
+                                        
                                         <thead align="center" class="align-top">
                                             <tr>
-                                                <th>Order Quantity</th>
+                                                <th style="padding: 0px 25px">Qty</th>
                                                 {{-- <th scope="col">Item text</th> --}}
                                                 <th colspan="3">Description</th>                                                    
                                                
                                                 <th>Scan Item UPC</th>
                                                 <th>Cases per Pallet</th>
                                                 <th>Food Show Deal</th>
-                                                <th>OrderNotes $</th>
+                                                <th style="padding: 0px 25px">Notes $</th>
                                                 <th>Final Price $</th>
                                                 {{-- <th>{{Auth::user()->date1}}</th>
                                                 <th>{{Auth::user()->date2}}</th>

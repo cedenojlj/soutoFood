@@ -333,7 +333,7 @@
                                                             <button wire:click="eliminar" type="button" class="btn btn-danger btn-sm">-</button> </th>     --}}
                                                 
                                                             <td>
-                                                                <input wire:model.debounce.1000ms="amount.{{$key}}" 
+                                                                <input wire:model="amount.{{$key}}" 
                                                                 id="amount" type="number"  
                                                                 class="form-control bg-info @error('amount.'.$key) is-invalid @enderror" 
                                                                 name="amount" required autofocus max="999">
@@ -364,7 +364,7 @@
                                                             </td> --}}
                                 
                                 
-                                                            <td><input wire:model.debounce.1000ms="notes.{{$key}}" 
+                                                            <td><input wire:model="notes.{{$key}}" 
                                                                 id="notes" type="number" 
                                                                 class="form-control bg-info @error('notes.'.$key) is-invalid @enderror" name="notes" placeholder="$" step="0.01">
                                                             
@@ -383,7 +383,7 @@
                                                             
                                                             <td>{{!empty($notes[$key])? "$".number_format( (floatval($value['price']) - floatval($notes[$key])), 2) :"$".number_format( $value['price'],2) }}</td>
                                                     
-                                                            <td><input wire:model.debounce.1000ms="qtyone.{{$key}}" 
+                                                            <td><input wire:model="qtyone.{{$key}}" 
                                                                 id="qtyone" type="number" 
                                                                 class="form-control bg-info @error('qtyone.'.$key) is-invalid @enderror" name="qtyone" required>
                                                             
@@ -394,7 +394,7 @@
                                 
                                                             </td>
                                                     
-                                                            <td><input wire:model.debounce.1000ms="qtytwo.{{$key}}"  
+                                                            <td><input wire:model="qtytwo.{{$key}}"  
                                                                 id="qtytwo" type="number" 
                                                                 class="form-control bg-info @error('qtytwo.'.$key) is-invalid @enderror" name="qtytwo">
                                                             
@@ -404,7 +404,7 @@
                                 
                                                             </td>
                                                     
-                                                            <td><input wire:model.debounce.1000ms="qtythree.{{$key}}" 
+                                                            <td><input wire:model="qtythree.{{$key}}" 
                                                                 id="qtythree" type="number"  
                                                                 class="form-control bg-info @error('qtythree.'.$key) is-invalid @enderror" name="qtythree">
                                                             

@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class OrderList extends Component
 {
 
-    use WithPagination;
-    protected $paginationTheme = 'bootstrap';
+    // use WithPagination;
+    // protected $paginationTheme = 'bootstrap';
     public $search='';
     
     public function updatingSearch()
@@ -22,7 +22,8 @@ class OrderList extends Component
     public function render()
     {
         return view('livewire.order-list',[
-            'orders'=>Order::where('customerName','LIKE','%'.$this->search.'%')->where('user_id',Auth::id())->paginate(25),
+            // 'orders'=>Order::where('customerName','LIKE','%'.$this->search.'%')->where('user_id',Auth::id())->paginate(25),
+            'orders'=>Order::where('customerName','LIKE','%'.$this->search.'%')->where('user_id',Auth::id())->get(),
         ]);
     }
 }

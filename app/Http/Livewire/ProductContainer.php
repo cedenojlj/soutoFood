@@ -619,6 +619,8 @@ class ProductContainer extends Component
 
 
                         session()->put('carrito', $item);
+
+
                     } else {
 
                         $carrito[$key] = [
@@ -662,6 +664,7 @@ class ProductContainer extends Component
 
         unset($value);
 
+        //dd(session('carrito'));
 
 
         if ($this->mierror) {

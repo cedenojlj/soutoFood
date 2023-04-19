@@ -243,7 +243,7 @@ class CheckOut extends Component
                         $item['qtytwo'] = 0;
                     }
 
-                    if (empty($item['notes'])) {
+                    if (empty($item['qtythree'])) {
 
                         $item['qtythree'] = 0;
                     }

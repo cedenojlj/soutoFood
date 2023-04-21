@@ -75,33 +75,42 @@
 </table>
 
 
+ 
 
-<table class="table">
-       
-    <tbody>
 
-        <tr>            
-            <th style="font-size:14px"> <strong>Rebate #</strong></th>
-            <td style="font-size:14px"><strong>{{$numeroRebate}}</strong></td>  
-            
-        </tr>    
+    <table class="table">
+        
+        <tbody>
 
-        <tr>            
-            <th style="font-size:14px"> <strong>Rebate</strong></th>
-            <td style="font-size:14px"><strong>{{"$ ". number_format($orden->rebate,2)}}</strong></td>  
+            @if ($orden->rebate > 0)  
+
+                <tr>            
+                    <th style="font-size:14px"> <strong>Rebate #</strong></th>
+                    <td style="font-size:14px"><strong>{{$numeroRebate}}</strong></td>  
+                    
+                </tr>    
+
+                <tr>            
+                    <th style="font-size:14px"> <strong>Rebate</strong></th>
+                    <td style="font-size:14px"><strong>{{"$ ". number_format($orden->rebate,2)}}</strong></td>  
+                    
+                </tr> 
             
-        </tr>    
-        <tr>
+            @endif
             
-            <th style="font-size:14px;"> <strong>Amount</strong></th>
-            <td style="font-size:14px"><strong>{{"$ ". number_format($orden->total,2) }}</strong></td>   
+                <tr>
+                    
+                    <th style="font-size:14px;"> <strong>Amount</strong></th>
+                    <td style="font-size:14px"><strong>{{"$ ". number_format($orden->total,2) }}</strong></td>   
+                    
+                                
+                </tr>          
             
-                        
-        </tr>          
-         
-       
-    </tbody>
-</table>
+        
+        </tbody>
+    </table>
+
+
 
 
 <table >

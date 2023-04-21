@@ -82,7 +82,7 @@ class CheckOut extends Component
 
         'idCustomer' => 'required',
         'email' => 'required|email',
-        'email2' => 'required|email',
+        'email2' => 'email',
         'emailRep' => 'required|email',
         'vendorEmail' => 'required|email',
         'pin' => 'required',
@@ -316,6 +316,8 @@ class CheckOut extends Component
 
                 $this->rebateMail($id);
             }
+
+
         } catch (\Throwable $th) {
 
             report($th);
@@ -348,22 +350,22 @@ class CheckOut extends Component
 
         ];
 
-        if (isset(Auth::user()->emailuser)) {
+        if (!empty(Auth::user()->emailuser)) {
 
             $destinatarios[] = Auth::user()->emailuser;
         }
 
-        if (isset($orden->customerEmail)) {
+        if (!empty($orden->customerEmail)) {
 
             $destinatarios[] = $orden->customerEmail;
         }
 
-        if (isset($orden->customerEmail2)) {
+        if (!empty($orden->customerEmail2)) {
 
             $destinatarios[] = $orden->customerEmail2;
         }
 
-        if (isset($orden->saleRepEmail)) {
+        if (!empty($orden->saleRepEmail)) {
 
             $destinatarios[] = $orden->saleRepEmail;
         }
@@ -411,22 +413,22 @@ class CheckOut extends Component
 
 
 
-        if (isset(Auth::user()->emailuser)) {
+        if (!empty(Auth::user()->emailuser)) {
 
             $destinatarios[] = Auth::user()->emailuser;
         }
 
-        if (isset($orden->customerEmail)) {
+        if (!empty($orden->customerEmail)) {
 
             $destinatarios[] = $orden->customerEmail;
         }
 
-        if (isset($orden->customerEmail2)) {
+        if (!empty($orden->customerEmail2)) {
 
             $destinatarios[] = $orden->customerEmail2;
         }
 
-        if (isset($orden->saleRepEmail)) {
+        if (!empty($orden->saleRepEmail)) {
 
             $destinatarios[] = $orden->saleRepEmail;
         }

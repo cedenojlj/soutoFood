@@ -78,7 +78,7 @@ class ProductContainer extends Component
     public $showBotonRetroceso = true;
 
 
-    protected $listeners = ['ocultar' => 'ocultar', 'regresar'=>'regresar', 'ocultarBack'=>'ocultarBack'];
+    protected $listeners = ['ocultar' => 'ocultar', 'regresar' => 'regresar', 'ocultarBack' => 'ocultarBack'];
 
 
     protected $rules = [
@@ -104,37 +104,38 @@ class ProductContainer extends Component
 
     public function verificarAmount($key)
     {
-        
+
         if (empty($this->qtyone[$key])) {
-            
+
             $this->qtyone[$key] = 0;
         }
 
-       
+
         if (empty($this->qtytwo[$key])) {
-            
+
             $this->qtytwo[$key] = 0;
         }
 
         if (empty($this->qtythree[$key])) {
-            
+
             $this->qtythree[$key] = 0;
         }
 
         if (empty($this->amount[$key])) {
-            
+
             $this->amount[$key] =  $this->qtyone[$key] +  $this->qtytwo[$key] + $this->qtythree[$key];
         }
 
         $sumaQty = $this->qtyone[$key] +  $this->qtytwo[$key] + $this->qtythree[$key];
 
-        if ($this->amount[$key] != $sumaQty ) {
+        /*
+		
+		if ($this->amount[$key] != $sumaQty ) {
            
             $this->amount[$key] = $sumaQty;
         }
-
-
-
+		
+		*/
     }
 
 
@@ -152,23 +153,18 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0)  ) {
+        if (($value <= 0)) {
 
             $this->amount[$key] = '';
 
         } elseif ($value > 99999) {
-            
+
             $this->amount[$key] = 99999;
 
         } else {
 
             $this->amount[$key] = $value;
         }
-
-       
-
-
-
     }
 
     public function updatedQtyone($value, $key)
@@ -185,7 +181,7 @@ class ProductContainer extends Component
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0) ) {
+        if (($value <= 0)) {
 
             $this->qtyone[$key] = '';
 
@@ -193,13 +189,12 @@ class ProductContainer extends Component
 
             $this->qtyone[$key] = 99999;
 
-        }else {
+        } else {
 
             $this->qtyone[$key] = $value;
         }
-    
-        $this->verificarAmount($key);
 
+       // $this->verificarAmount($key);
     }
 
 
@@ -225,15 +220,13 @@ class ProductContainer extends Component
 
             $this->qtytwo[$key] = 99999;
 
-        }else {
+        } else {
 
             $this->qtytwo[$key] = $value;
         }
 
 
-        $this->verificarAmount($key);
-
-
+       // $this->verificarAmount($key);
     }
 
     public function updatedQtythree($value, $key)
@@ -258,15 +251,13 @@ class ProductContainer extends Component
 
             $this->qtythree[$key] = 99999;
 
-        }else {
+        } else {
 
             $this->qtythree[$key] = $value;
         }
 
 
-        $this->verificarAmount($key);
-
-
+       // $this->verificarAmount($key);
     }
 
 
@@ -281,19 +272,19 @@ class ProductContainer extends Component
 
         //$this->amount[$clave]='';
 
-       // dd($this->items[$key]['price']);
+        // dd($this->items[$key]['price']);
 
         $numPrice = $this->items[$key]['price'];
 
         //$this->reset($this->amount[$clave]);
 
-        if (($value <= 0 or $value> $numPrice)) {
+        if (($value <= 0 or $value > $numPrice)) {
 
             $this->notes[$key] = '';
 
         } else {
 
-            $this->notes[$key] = number_format($value,2) ;
+            $this->notes[$key] = number_format($value, 2);
         }
     }
 
@@ -369,9 +360,8 @@ class ProductContainer extends Component
 
             if (!empty($this->items)) {
 
-                $this->indicador[count($this->items)-1] = 'bg-warning';
-                
-            }    
+                $this->indicador[count($this->items) - 1] = 'bg-warning';
+            }
 
             $this->reset('search');
 
@@ -441,9 +431,8 @@ class ProductContainer extends Component
             if (!empty($this->items)) {
 
                 $keyBundle = count($this->items);
-               
-            } 
-            
+            }
+
 
 
             foreach ($bundles as $bundle) {
@@ -468,12 +457,10 @@ class ProductContainer extends Component
 
                 if (!empty($this->items)) {
 
-                    $this->indicador[count($this->items)-1] = 'bg-warning';
-                    
-                }    
+                    $this->indicador[count($this->items) - 1] = 'bg-warning';
+                }
 
                 $keyBundle = $keyBundle + 1;
-
             }
 
             //dd($this->items);
@@ -512,7 +499,6 @@ class ProductContainer extends Component
         if (empty($this->items)) {
 
             return false;
-
         }
 
         $this->mostrarItems = false;
@@ -533,7 +519,7 @@ class ProductContainer extends Component
     {
 
         $this->showBotonRetroceso = true;
-       
+
         if (empty($this->items)) {
 
             return false;
@@ -542,7 +528,7 @@ class ProductContainer extends Component
 
         //session()->forget('carrito');
 
-       // $proceder = false;
+        // $proceder = false;
 
         $errores = 0;
 
@@ -551,9 +537,47 @@ class ProductContainer extends Component
         foreach ($this->items as $key => $value) {
 
 
+            /*if (empty($this->amount[$key]) or $this->amount[$key] < 0) {
+
+                    $this->amount[$key] = 0;
+                }*/
+
+            if (empty($this->notes[$key]) or $this->notes[$key] < 0) {
+
+                $this->notes[$key] = 0;
+            }
+
+            if (empty($this->qtyone[$key]) or $this->qtyone[$key] < 0) {
+
+                $this->qtyone[$key] = 0;
+            }
+
+            if (empty($this->qtytwo[$key]) or $this->qtytwo[$key] < 0) {
+
+                $this->qtytwo[$key] = 0;
+            }
+
+            if (empty($this->qtythree[$key]) or $this->qtythree[$key] < 0) {
+
+                $this->qtythree[$key] = 0;
+            }
+
+            $sumaparcial = $this->qtyone[$key] + $this->qtytwo[$key] + $this->qtythree[$key];
+
+
+            if (empty($this->amount[$key]) and $sumaparcial > 0) {
+
+                $errores = $errores + 1;
+
+                $this->mierror = true;
+
+                $this->indicador[$key] = 'table-danger';
+            }
+
+
             if (!empty($this->amount[$key])) {
 
-                if ($this->amount[$key] < 0) {
+                /* if ($this->amount[$key] < 0) {
 
                     $this->amount[$key] = 0;
                 }
@@ -578,9 +602,11 @@ class ProductContainer extends Component
                     $this->qtythree[$key] = 0;
                 }
 
-                $finalprice = (float) $this->prices[$key] - (float) $this->notes[$key];
+                
+                $sumaparcial = $this->qtyone[$key] + $this->qtytwo[$key] + $this->qtythree[$key]; */
 
-                $sumaparcial = $this->qtyone[$key] + $this->qtytwo[$key] + $this->qtythree[$key];
+
+                $finalprice = (float) $this->prices[$key] - (float) $this->notes[$key];
 
 
                 if ($sumaparcial == $this->amount[$key] and $this->amount[$key] > 0) {
@@ -623,8 +649,6 @@ class ProductContainer extends Component
 
 
                         session()->put('carrito', $item);
-
-
                     } else {
 
                         $carrito[$key] = [
@@ -646,11 +670,9 @@ class ProductContainer extends Component
 
                         session()->put('carrito', $carrito);
                     }
-
-
                 } else {
 
-                    
+
                     $this->mierror = true;
                     $this->indicador[$key] = 'table-danger';
 
@@ -686,7 +708,6 @@ class ProductContainer extends Component
             $this->mierror = true;
 
             return false;
-            
         }
 
 
@@ -699,7 +720,7 @@ class ProductContainer extends Component
         $this->mensajex = '';
 
 
-       /*  if ($this->mierror) {
+        /*  if ($this->mierror) {
 
 
             $this->mensajex = 'The quantity must be equal to 
@@ -728,11 +749,6 @@ class ProductContainer extends Component
             // return redirect()->to('/checkout');
 
         } */
-
-
-
-
-
     }
 
     public function regresar()
@@ -760,7 +776,7 @@ class ProductContainer extends Component
 
             'fecha1' => Carbon::createFromFormat('Y-m-d', $user->date1)->format('m/d/Y'),
             'fecha2' => Carbon::createFromFormat('Y-m-d', $user->date2)->format('m/d/Y'),
-            'fecha3' => Carbon::createFromFormat('Y-m-d', $user->date1)->format('m/d/Y')
+            'fecha3' => Carbon::createFromFormat('Y-m-d', $user->date3)->format('m/d/Y')
         ]);
     }
 }

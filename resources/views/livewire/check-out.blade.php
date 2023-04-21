@@ -148,7 +148,7 @@
                                 
                                                 <label for="email2" class="col-form-label text-md-end">Email Customer</label>
                                                 
-                                                <input wire:model="email2" id="email2" type="email2" class="form-control @error('email2') is-invalid @enderror" name="email2" required>
+                                                <input wire:model="email2" id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2">
                                 
                                                 @error('email2')
                                                     <span class="invalid-feedback" role="alert">
@@ -188,15 +188,15 @@
                                 
                                                 <label for="vendorEmail" class="col-form-label text-md-end">Email Vendor</label>
                                                 
-                                               {{--  <input wire:model="vendorEmail" id="vendorEmail" type="vendorEmail" class="form-control @error('vendorEmail') is-invalid @enderror" name="vendorEmail" required> --}}
+                                                <input wire:model="vendorEmail" id="vendorEmail" type="email" class="form-control @error('vendorEmail') is-invalid @enderror" name="vendorEmail" required>
                                 
-                                                {{-- @error('vendorEmail')
+                                                @error('vendorEmail')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                @enderror --}}
+                                                @enderror 
 
-                                                <label class="form-control">{{ Auth::user()->emailuser }}</label>
+                                               {{--  <label class="form-control">{{ Auth::user()->emailuser }}</label> --}}
 
 
                                             </div>
@@ -434,5 +434,7 @@
             @endif
     
 </div>
+
+
 
 

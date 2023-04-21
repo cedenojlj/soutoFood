@@ -14,10 +14,10 @@ class OrderList extends Component
     // protected $paginationTheme = 'bootstrap';
     public $search='';
     
-    public function updatingSearch()
+    /* public function updatingSearch()
     {
-        $this->resetPage();
-    }
+        //$this->resetPage();
+    } */
 
     public function render()
     {
@@ -27,3 +27,5 @@ class OrderList extends Component
         ]);
     }
 }
+
+

@@ -542,8 +542,11 @@ class ProductContainer extends Component
 
         //session()->forget('carrito');
 
+       // $proceder = false;
 
-        $proceder = false;
+        $errores = 0;
+
+        $itemValidos = 0;
 
         foreach ($this->items as $key => $value) {
 
@@ -587,11 +590,12 @@ class ProductContainer extends Component
                     $this->mierror = false;
                     $this->indicador[$key] = 'table-success';
 
-                    $proceder = true;
+                    //$proceder = true;
                     $miproducto = Product::find($value['id']);
 
                     //******************************************* */
 
+                    $itemValidos = $itemValidos + 1;
 
                     $item = [
 
@@ -644,14 +648,14 @@ class ProductContainer extends Component
                     }
 
 
-                    //*********************************************** */
-                    # code...
                 } else {
 
-                    /* $this->mensajex= 'The quantity must be equal to 
-                the sum of the quantity One, two and three';     */
+                    
                     $this->mierror = true;
                     $this->indicador[$key] = 'table-danger';
+
+                    $errores = $errores + 1;
+
 
                     # code...
                 }
@@ -666,42 +670,42 @@ class ProductContainer extends Component
 
         //dd(session('carrito'));
 
+        if ($errores > 0) {
 
-        if ($this->mierror) {
+            $this->mensajex = 'The quantity must be equal to 
+            the sum of the quantity One, two and three, only valid items were added';
+
+            return false;
+            # code...
+        }
+
+        if ($itemValidos == 0) {
+
+            $this->mensajex = 'You must select an item';
+
+            $this->mierror = true;
+
+            return false;
+            
+        }
+
+
+        $this->mensajex = 'Product added or updated successfully';
+
+        $this->showCheckout = true;
+
+        $this->showGeneral = false;
+
+        $this->mensajex = '';
+
+
+       /*  if ($this->mierror) {
 
 
             $this->mensajex = 'The quantity must be equal to 
                 the sum of the quantity One, two and three, only valid items were added';
-
-            //dd(count($carrito));
-
-            /* if (isset($carrito)) {
-
-                if (count($carrito)>0) {
-
-                    $this->showCheckout=true;
-
-                    $this->showGeneral=false;
-            
-                    $this->mensajex = '';
-                   
-                }
-            
-           } */
-
-
-            /*  if ($proceder) {
-
-                $this->showCheckout=true;
-
-                $this->showGeneral=false;
-        
-                $this->mensajex = '';           
-        
-           } */
+           
         } else {
-
-
 
             if ($proceder) {
 
@@ -712,6 +716,7 @@ class ProductContainer extends Component
                 $this->showGeneral = false;
 
                 $this->mensajex = '';
+
             } else {
 
                 $this->mensajex = 'You must select an item';
@@ -722,7 +727,12 @@ class ProductContainer extends Component
 
             // return redirect()->to('/checkout');
 
-        }
+        } */
+
+
+
+
+
     }
 
     public function regresar()

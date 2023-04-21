@@ -518,6 +518,8 @@ class ProductContainer extends Component
     public function save()
     {
 
+        $this->mensajex = '';
+
         $this->showBotonRetroceso = true;
 
         if (empty($this->items)) {
@@ -613,7 +615,7 @@ class ProductContainer extends Component
 
 
 
-                    $this->mierror = false;
+                   // $this->mierror = false;
                     $this->indicador[$key] = 'table-success';
 
                     //$proceder = true;
@@ -711,7 +713,7 @@ class ProductContainer extends Component
         }
 
 
-        $this->mensajex = 'Product added or updated successfully';
+       // $this->mensajex = 'Product added or updated successfully';
 
         $this->showCheckout = true;
 
@@ -780,3 +782,5 @@ class ProductContainer extends Component
         ]);
     }
 }
+
+

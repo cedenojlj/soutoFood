@@ -40,7 +40,7 @@
 
                             <div class="row mt-3">
                                 
-                                <h5>Order: <a href="{{url('export-order',[$lastId])}}" class="btn btn-primary">{{ $Customer->name . " - ". Auth::user()->name . " .xlsx" }}</a> </h5>
+                                <h5>Order: <a href="{{url('export-order',[$lastId])}}" class="btn btn-primary">{{ $Customer->name."-".Auth::user()->name.".xlsx" }}</a> </h5>
                                 <h5>Date Order: {{$orderDate->format('m-d-Y')}}</h5>
                             
                                 <h5>Total Order: {{'$ ' . number_format($total,2)}}</h5>

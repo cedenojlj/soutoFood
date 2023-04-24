@@ -36,7 +36,7 @@ class RebateMail extends Mailable
     {
         return new Envelope(
            /*  subject:  $this->emailData['subjectEmail'], */
-            subject:'Souto Foods Festival'. " - ". $this->emailData['customer']. " - ". Auth::user()->name . " - Rebate",
+            subject:'Souto Foods Festival'."-".$this->emailData['customer']."-".Auth::user()->name."-Rebate",
         );
     }
 

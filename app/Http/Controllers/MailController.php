@@ -30,7 +30,7 @@ class MailController extends Controller
        
         $tittle = 'Order Created ' .$numberOrder; 
 
-        $subjectEmail = 'Souto Foods Festival - '.  $customer . ' - ' . Auth::user()->name;
+        $subjectEmail = 'Souto Foods Festival-'.$customer.'-'.Auth::user()->name;
        
         $emailData=[
 
@@ -101,7 +101,7 @@ class MailController extends Controller
        
         $tittle = 'Rebate Order Created ' .$numberOrder; 
 
-        $subjectEmail = 'Souto Foods Festival - '.  $customer . ' - ' . Auth::user()->name . ' - Rebate';
+        $subjectEmail = 'Souto Foods Festival-'.$customer.'-'.Auth::user()->name.'-Rebate';
 
                
         $emailData=[

@@ -27,7 +27,7 @@ class DemoEmail extends Mailable
     {
         $this->emailData= $emailData;
         $this->reporte = $reporte;
-        $this->nameReport = $emailData['customer'] . " - ". Auth::user()->name . ".xlsx";
+        $this->nameReport = $emailData['customer']."-".Auth::user()->name.".xlsx";
         $this->nameSubject = Auth::user()->name;
     }
 
@@ -38,7 +38,7 @@ class DemoEmail extends Mailable
     {
         return new Envelope(
 
-            subject:'Souto Foods Festival'. " - ". $this->emailData['customer']. " - ". Auth::user()->name,
+            subject:'Souto Foods Festival'."-". $this->emailData['customer']."-".Auth::user()->name,
         );
     }
 

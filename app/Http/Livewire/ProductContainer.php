@@ -156,11 +156,9 @@ class ProductContainer extends Component
         if (($value <= 0)) {
 
             $this->amount[$key] = '';
-
         } elseif ($value > 99999) {
 
             $this->amount[$key] = 99999;
-
         } else {
 
             $this->amount[$key] = $value;
@@ -184,17 +182,15 @@ class ProductContainer extends Component
         if (($value <= 0)) {
 
             $this->qtyone[$key] = '';
-
         } elseif ($value > 99999) {
 
             $this->qtyone[$key] = 99999;
-
         } else {
 
             $this->qtyone[$key] = $value;
         }
 
-       // $this->verificarAmount($key);
+        // $this->verificarAmount($key);
     }
 
 
@@ -215,18 +211,16 @@ class ProductContainer extends Component
         if (($value <= 0)) {
 
             $this->qtytwo[$key] = '';
-
         } elseif ($value > 99999) {
 
             $this->qtytwo[$key] = 99999;
-
         } else {
 
             $this->qtytwo[$key] = $value;
         }
 
 
-       // $this->verificarAmount($key);
+        // $this->verificarAmount($key);
     }
 
     public function updatedQtythree($value, $key)
@@ -246,18 +240,16 @@ class ProductContainer extends Component
         if (($value <= 0)) {
 
             $this->qtythree[$key] = '';
-
         } elseif ($value > 99999) {
 
             $this->qtythree[$key] = 99999;
-
         } else {
 
             $this->qtythree[$key] = $value;
         }
 
 
-       // $this->verificarAmount($key);
+        // $this->verificarAmount($key);
     }
 
 
@@ -281,7 +273,6 @@ class ProductContainer extends Component
         if (($value <= 0 or $value > $numPrice)) {
 
             $this->notes[$key] = '';
-
         } else {
 
             $this->notes[$key] = number_format($value, 2);
@@ -615,7 +606,7 @@ class ProductContainer extends Component
 
 
 
-                   // $this->mierror = false;
+                    // $this->mierror = false;
                     $this->indicador[$key] = 'table-success';
 
                     //$proceder = true;
@@ -713,7 +704,7 @@ class ProductContainer extends Component
         }
 
 
-       // $this->mensajex = 'Product added or updated successfully';
+        // $this->mensajex = 'Product added or updated successfully';
 
         $this->showCheckout = true;
 
@@ -782,5 +773,3 @@ class ProductContainer extends Component
         ]);
     }
 }
-
-

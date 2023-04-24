@@ -79,7 +79,9 @@ class OrderController extends Controller
       $nameUser= $user->name; 
       $orderDate= $order->created_at->format('mdyhis');   
 
-      $nameFile= $nameCustomer."-".$nameUser."-".$orderDate.".xlsx";
+     // $nameFile= $nameCustomer."-".$nameUser."-".$orderDate.".xlsx";
+
+      $nameFile= $nameCustomer."-".$nameUser.".xlsx";
 
       return Excel::download(new OrderExport($id), $nameFile);
 
@@ -95,7 +97,9 @@ class OrderController extends Controller
         $nameUser= $user->name; 
         $orderDate= $order->created_at->format('mdyhis');   
   
-        $nameFile= "Rebate-".$nameCustomer."-".$nameUser."-".$orderDate.".xlsx";
+        //$nameFile= "Rebate-".$nameCustomer."-".$nameUser."-".$orderDate.".xlsx";
+
+        $nameFile= "Rebate-".$nameCustomer."-".$nameUser.".xlsx";
   
         return Excel::download(new RebateExport($id), $nameFile);
   
